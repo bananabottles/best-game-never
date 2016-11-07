@@ -186,40 +186,39 @@ public class Map
       
       Area Bridge = new Area(2, 4, 0, "Broken Bridge", "(description here).\nNorth - River Bank\nSouth - Ocean\nEast - River\nWest - Geyser");
       addNewArea(Bridge);
-      /*
-//row four
-      Area Outlet = new Area(3, 0, 0, "River Outlet", "(description here).\nNorth - River Bank\nSouth - Ocean\nEast - River\nWest - Geyser");
-      addNewArea(Outlet);
+
+//row 4      
+      Area Farm = new Area(3, 0, 1, "Abandoned Farm", "You find the remains of a ship on the beach.\nNorth - Forest\nSouth - Ocean\nEast - Beach Campsite\nWest - River Outlet");
+      addNewArea(Farm);
       
-      Area Outlet = new Area(3, 1, 0, "River Outlet", "(description here).\nNorth - River Bank\nSouth - Ocean\nEast - River\nWest - Geyser");
-      addNewArea(Outlet);
+      Area Crater = new Area(3, 1, 1, "Crater", "You find the remains of a ship on the beach.\nNorth - Forest\nSouth - Ocean\nEast - Beach Campsite\nWest - River Outlet");
+      addNewArea(Crater);
       
-      Area Outlet = new Area(3, 2, 0, "River Outlet", "(description here).\nNorth - River Bank\nSouth - Ocean\nEast - River\nWest - Geyser");
-      addNewArea(Outlet);
+      Area Staircase = new Area(3, 2, 1, "Stone Staircase", "You find the remains of a ship on the beach.\nNorth - Forest\nSouth - Ocean\nEast - Beach Campsite\nWest - River Outlet");
+      addNewArea(Staircase);
       
-      Area Outlet = new Area(3, 3, 0, "River Outlet", "(description here).\nNorth - River Bank\nSouth - Ocean\nEast - River\nWest - Geyser");
-      addNewArea(Outlet);
+      Area Watchtower = new Area(3, 3, 1, "Watchtower", "You find the remains of a ship on the beach.\nNorth - Forest\nSouth - Ocean\nEast - Beach Campsite\nWest - River Outlet");
+      addNewArea(Watchtower);
       
-      Area Outlet = new Area(3, 4, 0, "River Outlet", "(description here).\nNorth - River Bank\nSouth - Ocean\nEast - River\nWest - Geyser");
-      addNewArea(Outlet);
+      Area Dam = new Area(3, 4, 1, "River Dam", "You find the remains of a ship on the beach.\nNorth - Forest\nSouth - Ocean\nEast - Beach Campsite\nWest - River Outlet");
+      addNewArea(Dam);
+
+//row 5
+      Area Cave = new Area(4, 0, 1, "Cave", "You find the remains of a ship on the beach.\nNorth - Forest\nSouth - Ocean\nEast - Beach Campsite\nWest - River Outlet");
+      addNewArea(Cave);
       
-//row five
-      Area Outlet = new Area(4, 0, 0, "River Outlet", "(description here).\nNorth - River Bank\nSouth - Ocean\nEast - River\nWest - Geyser");
-      addNewArea(Outlet);
+      Area Wall = new Area(4, 1, 1, "Castle Wall", "You find the remains of a ship on the beach.\nNorth - Forest\nSouth - Ocean\nEast - Beach Campsite\nWest - River Outlet");
+      addNewArea(Wall);
       
-      Area Outlet = new Area(4, 1, 0, "River Outlet", "(description here).\nNorth - River Bank\nSouth - Ocean\nEast - River\nWest - Geyser");
-      addNewArea(Outlet);
+      Area Entrance = new Area(4, 2, 1, "Castle Entrance", "You find the remains of a ship on the beach.\nNorth - Forest\nSouth - Ocean\nEast - Beach Campsite\nWest - River Outlet");
+      addNewArea(Entrance);
       
-      Area Outlet = new Area(4, 2, 0, "River Outlet", "(description here).\nNorth - River Bank\nSouth - Ocean\nEast - River\nWest - Geyser");
-      addNewArea(Outlet);
+      Area Village = new Area(4, 3, 1, "Village", "You find the remains of a ship on the beach.\nNorth - Forest\nSouth - Ocean\nEast - Beach Campsite\nWest - River Outlet");
+      addNewArea(Village);
       
-      Area Outlet = new Area(4, 3, 0, "River Outlet", "(description here).\nNorth - River Bank\nSouth - Ocean\nEast - River\nWest - Geyser");
-      addNewArea(Outlet);
-      
-      Area Outlet = new Area(4, 4, 0, "River Outlet", "(description here).\nNorth - River Bank\nSouth - Ocean\nEast - River\nWest - Geyser");
-      addNewArea(Outlet);
-   
-   */
+      Area Resivior = new Area(4, 4, 1, "Resivior Bank", "You find the remains of a ship on the beach.\nNorth - Forest\nSouth - Ocean\nEast - Beach Campsite\nWest - River Outlet");
+      addNewArea(Resivior);
+
    }
    
    public void loadMap2()
