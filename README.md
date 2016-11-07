@@ -1,4 +1,4 @@
 # best-game-never
-Daniel \n
+Daniel
 ｱﾀﾞﾑｶﾙﾐｶﾙ
 R-r-roland-sama
