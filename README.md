@@ -1,4 +1,4 @@
 # best-game-never
-Daniel
-ｱﾀﾞﾑｶﾙﾐｶﾙ
-R-r-roland-sama
+Daniel << endl;
+ｱﾀﾞﾑｶﾙﾐｶﾙ << endl;
+R-r-roland-sama << endl;
