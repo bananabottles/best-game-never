@@ -158,7 +158,7 @@ public class Map
       Area Cabin = new Area(1, 0, 0, "Deserted Cabin", "(description here).\nNorth - River Bank\nSouth - Ocean\nEast - River\nWest - Geyser");
       addNewArea(Cabin);
       
-      Area Forest = new Area(1, 1, 0, "Clearing in the Forest", "(description here).\nNorth - River Bank\nSouth - Ocean\nEast - River\nWest - Geyser");
+      Area Forest = new Area(1, 1, 1, "Clearing in the Forest", "(description here).\nNorth - River Bank\nSouth - Ocean\nEast - River\nWest - Geyser");
       addNewArea(Forest);
       
       Area Gravel = new Area(1, 2, 0, "Gravel Path", "(description here).\nNorth - River Bank\nSouth - Ocean\nEast - River\nWest - Geyser");
@@ -188,35 +188,35 @@ public class Map
       addNewArea(Bridge);
 
 //row 4      
-      Area Farm = new Area(3, 0, 1, "Abandoned Farm", "You find the remains of a ship on the beach.\nNorth - Forest\nSouth - Ocean\nEast - Beach Campsite\nWest - River Outlet");
+      Area Farm = new Area(3, 0, 0, "Abandoned Farm", "You find the remains of a ship on the beach.\nNorth - Forest\nSouth - Ocean\nEast - Beach Campsite\nWest - River Outlet");
       addNewArea(Farm);
       
-      Area Crater = new Area(3, 1, 1, "Crater", "You find the remains of a ship on the beach.\nNorth - Forest\nSouth - Ocean\nEast - Beach Campsite\nWest - River Outlet");
+      Area Crater = new Area(3, 1, 0, "Crater", "You find the remains of a ship on the beach.\nNorth - Forest\nSouth - Ocean\nEast - Beach Campsite\nWest - River Outlet");
       addNewArea(Crater);
       
-      Area Staircase = new Area(3, 2, 1, "Stone Staircase", "You find the remains of a ship on the beach.\nNorth - Forest\nSouth - Ocean\nEast - Beach Campsite\nWest - River Outlet");
+      Area Staircase = new Area(3, 2, 0, "Stone Staircase", "You find the remains of a ship on the beach.\nNorth - Forest\nSouth - Ocean\nEast - Beach Campsite\nWest - River Outlet");
       addNewArea(Staircase);
       
-      Area Watchtower = new Area(3, 3, 1, "Watchtower", "You find the remains of a ship on the beach.\nNorth - Forest\nSouth - Ocean\nEast - Beach Campsite\nWest - River Outlet");
+      Area Watchtower = new Area(3, 3, 0, "Watchtower", "You find the remains of a ship on the beach.\nNorth - Forest\nSouth - Ocean\nEast - Beach Campsite\nWest - River Outlet");
       addNewArea(Watchtower);
       
-      Area Dam = new Area(3, 4, 1, "River Dam", "You find the remains of a ship on the beach.\nNorth - Forest\nSouth - Ocean\nEast - Beach Campsite\nWest - River Outlet");
+      Area Dam = new Area(3, 4, 0, "River Dam", "You find the remains of a ship on the beach.\nNorth - Forest\nSouth - Ocean\nEast - Beach Campsite\nWest - River Outlet");
       addNewArea(Dam);
 
 //row 5
-      Area Cave = new Area(4, 0, 1, "Cave", "You find the remains of a ship on the beach.\nNorth - Forest\nSouth - Ocean\nEast - Beach Campsite\nWest - River Outlet");
+      Area Cave = new Area(4, 0, 0, "Cave", "You find the remains of a ship on the beach.\nNorth - Forest\nSouth - Ocean\nEast - Beach Campsite\nWest - River Outlet");
       addNewArea(Cave);
       
-      Area Wall = new Area(4, 1, 1, "Castle Wall", "You find the remains of a ship on the beach.\nNorth - Forest\nSouth - Ocean\nEast - Beach Campsite\nWest - River Outlet");
+      Area Wall = new Area(4, 1, 0, "Castle Wall", "You find the remains of a ship on the beach.\nNorth - Forest\nSouth - Ocean\nEast - Beach Campsite\nWest - River Outlet");
       addNewArea(Wall);
       
-      Area Entrance = new Area(4, 2, 1, "Castle Entrance", "You find the remains of a ship on the beach.\nNorth - Forest\nSouth - Ocean\nEast - Beach Campsite\nWest - River Outlet");
+      Area Entrance = new Area(4, 2, 0, "Castle Entrance", "You find the remains of a ship on the beach.\nNorth - Forest\nSouth - Ocean\nEast - Beach Campsite\nWest - River Outlet");
       addNewArea(Entrance);
       
-      Area Village = new Area(4, 3, 1, "Village", "You find the remains of a ship on the beach.\nNorth - Forest\nSouth - Ocean\nEast - Beach Campsite\nWest - River Outlet");
+      Area Village = new Area(4, 3, 0, "Village", "You find the remains of a ship on the beach.\nNorth - Forest\nSouth - Ocean\nEast - Beach Campsite\nWest - River Outlet");
       addNewArea(Village);
       
-      Area Resivior = new Area(4, 4, 1, "Resivior Bank", "You find the remains of a ship on the beach.\nNorth - Forest\nSouth - Ocean\nEast - Beach Campsite\nWest - River Outlet");
+      Area Resivior = new Area(4, 4, 0, "Resivior Bank", "You find the remains of a ship on the beach.\nNorth - Forest\nSouth - Ocean\nEast - Beach Campsite\nWest - River Outlet");
       addNewArea(Resivior);
 
    }

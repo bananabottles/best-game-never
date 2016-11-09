@@ -5,18 +5,28 @@ public class Prompt
    private Scanner keyboard = new Scanner(System.in);
    private int direction;
    private int choice;
+   Combat combat = new Combat();
+   Player p1;
    
    public Prompt()
    {
    }
    
-   public void enterArea(Area a)
+   public void enterArea(Area a, Player p)
    {
+      p1 = p;
       System.out.println("You just entered: " + a.getName());
-      System.out.println(a.getDescription());
+      
+      if(a.getCombat() > 0 || a.getReturnFight() == true) //need to make a chance for combat, and a difficulty indicator instead of this
+      {
+         combat.runCombat(p, a);
+         
+      }
+      
    }
-   public int menu(Map map)
+   public int menu(Map map, Player p)
    {
+      p1 = p;
       int exit = 0;
       System.out.println("Enter a number for an action:\n1 - Travel\n2 - Inventory\n3 - Skills\n4 - Exit");
       choice = keyboard.nextInt();
@@ -39,6 +49,7 @@ public class Prompt
    
    public void travel(Map map)
    {
+      System.out.println(map.getCurrentArea().getDescription());
       System.out.println("\nEnter 1, 2, 3 or 4 to travel North, South, East, and West Respectively:");
       direction = keyboard.nextInt();
       switch(direction)
@@ -59,8 +70,6 @@ public class Prompt
             System.out.println("Error, invalid input");
             break;
       }
-      enterArea(map.getCurrentArea());
-      map.getCurrentArea().getCombat();
-      
+      enterArea(map.getCurrentArea(), p1);
    }
 }

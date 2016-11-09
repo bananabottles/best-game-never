@@ -6,7 +6,8 @@ public class Area
    private String areaDescription = "";
    private int row = 0;
    private int column = 0;   
-   private int combatLevel = 0;
+   private int combatLevel = 0;  //need to split this into two variables, one for combat chance, and one for combat difficulty
+   private boolean returnFight = false;
    /*
    0 - combat
    1 - easy bias
@@ -55,6 +56,11 @@ public class Area
       return combatLevel;
    }
    
+   public boolean getReturnFight()
+   {
+      return returnFight;
+   }
+   
    public void setAreaName(String name)
    {
       areaName = name;
@@ -71,6 +77,10 @@ public class Area
       column = c;
    }
    
+   public void setReturnFight(boolean b)
+   {
+      returnFight = b;
+   }
 }
    
    

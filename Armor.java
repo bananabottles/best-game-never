@@ -1,12 +1,13 @@
 import java.util.Random;
 
-public class Weapon extends Gear
+public class Armor extends Gear
 {
+   private double armor = 10;
+   private int slot = 1;
    
-   private double damage = 10;
    private Random rand = new Random();
    
-   public Weapon(int playerLevel, char difficulty) //difficulty is what difficulty the enemy was that you defeated, harder the enemy, the more likely you get rarer gear
+   public Armor(int playerLevel, char difficulty) //difficulty is what difficulty the enemy was that you defeated, harder the enemy, the more likely you get rarer gear
    {
       super(playerLevel);
    
@@ -30,27 +31,31 @@ public class Weapon extends Gear
             break;
       }
       
-      
+      String wName = "";
       int nameNum = rand.nextInt(4);
       
       switch(nameNum)
       {
          case 0:
-            super.setItemName("Lazerang");
+            wName = "Hide";
             break;
          case 1:
-            super.setItemName("Tridart Rifle");
+            wName = "Ballistic Weave";
             break;
          case 2:
-            super.setItemName("Railgun");
+            wName = "Light";
             break;
          case 3:
-            super.setItemName("Grapple Blade");
+            wName = "Flak";
             break;
          default:
-            super.setItemName("error");
+            wName = "error";
             break;
       }
+      
+      super.setItemName(wName);
+      
+      int slot = rand.nextInt(2) + 1;
       
       if(a < common)
       {
@@ -70,34 +75,30 @@ public class Weapon extends Gear
    private void makeCommon(int pl)
    {
       super.setRarity("Common");
-      damage = (rand.nextDouble() / 2.0) + 7.0 + ((double)pl * 0.5);
+      armor = (rand.nextDouble() / 2.0) + ((double)pl * 0.1);
       
    }
    
    private void makeRare(int pl)
    {
       super.setRarity("Rare");
-      damage = (rand.nextDouble() / 2.0) + 7.5 + ((double)pl * 0.7);
+      armor = (rand.nextDouble() / 2.0) + ((double)pl * 0.2);
    }
    
    
    private void makeLegend(int pl)
    {
       super.setRarity("Legend");
-      damage = (rand.nextDouble() / 2.0) + 8.5 + pl;
+      armor = (rand.nextDouble() / 2.0) + ((double)pl * 0.5);
    }
    
-   public double getDamage()
+   public double getArmor()
    {
-      return damage;
+      return armor;
    }
-   
-   
    
    public String toString()
    {
-      return "Weapon\nName: " + super.getItemName() + "\nDamage: " + damage + "\nWeight: " + super.getWeight() + "\nRarity: " + super.getRarity() + "\n";
+      return "Armor\nName: " + super.getItemName() + "\nArmor: " + armor + "\nWeight: " + super.getWeight() + "\nRarity: " + super.getRarity() + "\nSlot: " + slot + "\n";
    }
-   
-   
 }
