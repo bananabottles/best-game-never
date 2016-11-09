@@ -1,0 +1,6 @@
+Level: 0
+HP: 100
+STR:
+DEF: 
+DEX:
+CRIT:
