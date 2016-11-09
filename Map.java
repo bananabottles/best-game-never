@@ -137,7 +137,7 @@ public class Map
    
    public void loadMap1()
    {
-//row one
+//row one //Parameters, frist two are area, last one is for combat, fourth input for difficulty
       Area Shore = new Area(0, 0, 0, "Rocky Shore", "You find a rocky outcropping on the shore that gets progressively harder to maneuver.\nNorth - Forest\nSouth - Ocean\nEast - Beach Campsite\nWest - River Outlet");
       addNewArea(Shore);
       
@@ -231,6 +231,9 @@ public class Map
    
    }
    
+   public void story()
+   {
+   }
    
 }
 
