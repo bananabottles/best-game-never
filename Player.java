@@ -158,7 +158,7 @@ public class Player
       double armorhp = temphp * (def + armor1.getArmor() + armor1.getArmor());
       temphp = ((armorhp - s)/ armorhp) * temphp;
       difference = difference - temphp;
-      System.out.println("Enemy dealt " + difference + " damage\nYour Health: " + temphp + "/" + maxhp);
+      System.out.println("Enemy dealt " + (int)difference + " damage\nYour Health: " + (int)temphp + "/" + (int)maxhp);
    }
    
    public void pickUpWeapon(Weapon a)
@@ -173,7 +173,7 @@ public class Player
    
    public void setWeapon1(int weaponIndex)
    {
-      if(weapon1 == null && weapons.size() >= weaponIndex)
+      if(weapon1 == null && weapons.size() > weaponIndex)
       {
          weapon1 = weapons.get(weaponIndex);
          weapons.remove(weaponIndex);
@@ -192,7 +192,7 @@ public class Player
    
    public void setWeapon2(int weaponIndex)
    {
-      if(weapon2 == null && weapons.size() >= weaponIndex)
+      if(weapon2 == null && weapons.size() > weaponIndex)
       {
          weapon2 = weapons.get(weaponIndex);
          weapons.remove(weaponIndex);
@@ -211,7 +211,7 @@ public class Player
    
    public void setWeapon3(int weaponIndex)
    {
-      if(weapon3 == null && weapons.size() >= weaponIndex)
+      if(weapon3 == null && weapons.size() > weaponIndex)
       {
          weapon3 = weapons.get(weaponIndex);
          weapons.remove(weaponIndex);
@@ -225,6 +225,25 @@ public class Player
       else
       {
          System.out.println("Error, cannot set weapon 3");
+      }
+   }
+   
+   public void setWeapon4(int weaponIndex)
+   {
+      if(weapon4 == null && weapons.size() > weaponIndex)
+      {
+         weapon4 = weapons.get(weaponIndex);
+         weapons.remove(weaponIndex);
+      }
+      else if(weapons.size() >= weaponIndex)
+      {
+         weapons.add(weapon4);
+         weapon4 = weapons.get(weaponIndex);
+         weapons.remove(weaponIndex);
+      }
+      else
+      {
+         System.out.println("Error, cannot set weapon 4");
       }
    }
    
@@ -266,8 +285,35 @@ public class Player
       }
    }
    
-   public String getWeapons()
+   public String getWeaponsEquipped()
    {
-      return "1-" + weapon1.getItemName();
+      String one = "1-" + weapon1.getItemName() + " Damage: " + (int)weapon1.getDamage();
+      String two = "";
+      if(weapon2 != null)
+      {
+         two = "\n2-" + weapon2.getItemName() + " Damage: " + (int)weapon2.getDamage();
+      }
+      String three = "";
+      if(weapon3 != null)
+      {
+         three = "\n3-" + weapon3.getItemName() + " Damage: " + (int)weapon3.getDamage();
+      }
+      String four = "";
+      if(weapon4 != null)
+      {
+         four = "\n4-" + weapon4.getItemName() + " Damage: " + (int)weapon4.getDamage();
+      }
+      return one + two + three + four;
+   }
+   
+   public String getWeaponInventory()
+   {
+      String list = "";
+      int loop = weapons.size();
+      for(int i = 0; i < loop; i++)
+      {
+         list += "" + i + "-- " + weapons.get(i).details() + "\n";
+      }
+      return list;
    }
 }  

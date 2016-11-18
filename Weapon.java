@@ -92,6 +92,11 @@ public class Weapon extends Gear
       return damage;
    }
    
+   public String details()
+   {
+      return "" + super.getItemName() + ": D-" + (int)damage + " W-" + super.getWeight() + " R- " + super.getRarity();
+   }
+   
    
    
    public String toString()

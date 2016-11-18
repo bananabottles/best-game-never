@@ -13,10 +13,10 @@ public class Combat
    {
    }
    
-   public void runCombat(Player p, Area a) //int difficulty)
+   public void runCombat(Player p, Area a, int difficulty) //int difficulty)
    {
       p1 = p;
-      e1 = new Enemy(p.getLvl());
+      e1 = new Enemy(p.getLvl(), a.getCombatDifficulty());
       int number;
       boolean stay;
       System.out.println("Entering combat with: " + e1.getName());
@@ -41,6 +41,7 @@ public class Combat
       {
          System.out.println("An enemy will be waiting for your return");
          a.setReturnFight(true);
+         
          //if player runs from battle, current area should have 100% chance of spawning enemy for when player returns
          //player should be returned to previous area or to a safe area (we need to decide)
       }
@@ -51,7 +52,7 @@ public class Combat
       switch(option)
       {
          case 1:
-            System.out.println(p1.getWeapons());
+            System.out.println(p1.getWeaponsEquipped());
             attack(keyboard.nextInt());
             return true;
          case 2:

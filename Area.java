@@ -6,8 +6,10 @@ public class Area
    private String areaDescription = "";
    private int row = 0;
    private int column = 0;   
-   private int combatLevel = 0;  //need to split this into two variables, one for combat chance, and one for combat difficulty
+   private int combatChance = 0;
+   private int combatDifficulty = 0;
    private boolean returnFight = false;
+   private Boss bossEnemy = null;
    /*
    0 - combat
    1 - easy bias
@@ -22,13 +24,14 @@ public class Area
    {
    }
    
-   public Area(int r, int c, int combat, String name, String descr)
+   public Area(int r, int c, int combatC, int combatD, Boss boss, String name, String descr)
    {
       row = r;
       column = c;
       areaName = name;
       areaDescription = descr;
-      combatLevel = combat;
+      combatChance = combatC;
+      combatDifficulty = combatD;
    }
    
    public String getName()
@@ -51,14 +54,24 @@ public class Area
       return column;
    }
    
-   public int getCombat()
+   public int getCombatChance() // number between 0 and 99, enter 30 for a 30% chance
    {
-      return combatLevel;
+      return combatChance;
+   }
+   
+   public int getCombatDifficulty() //1-Common only, 2-Hard only,3-Common more likely than hard, 4-hard more likely than common, 5-Boss
+   {
+      return combatDifficulty;
    }
    
    public boolean getReturnFight()
    {
       return returnFight;
+   }
+   
+   public Boss getBossEnemy()
+   {
+      return bossEnemy;
    }
    
    public void setAreaName(String name)
