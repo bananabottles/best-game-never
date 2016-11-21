@@ -315,5 +315,17 @@ public class Player
          list += "" + i + "-- " + weapons.get(i).details() + "\n";
       }
       return list;
+      
    }
+   public String getArmorInventory()
+   {
+      String list = "";
+      int loop = armors.size();
+      for(int i = 0; i < loop; i++)
+      {
+         list += "" + i + "-- " + armors.get(i).details() + "\n";
+      }
+      return list;
+   }
+
 }  
