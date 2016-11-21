@@ -123,6 +123,10 @@ public class Enemy
    {
       damage = d;
    }
+   public void setName(String n)
+   {
+      eName = n;
+   }
    
    public double getTemphp()
    {
