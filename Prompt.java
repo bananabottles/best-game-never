@@ -69,7 +69,7 @@ public class Prompt
    Gives the player the option to travel, to different areas in the map.
    uses the move functions in the class Map and the local function enterArea after an area is chosen
    */   
-   public void travel(Map map)
+   private void travel(Map map)
    {
       System.out.println(map.getCurrentArea().getDescription());
       System.out.println("\nEnter 1, 2, 3 or 4 to travel North, South, East, and West Respectively:");
@@ -97,7 +97,7 @@ public class Prompt
    /**
    Displays the user's inventory (should be weapons and armor, plus any items and currency if we include those
    */
-   public void inventory(Player p)
+   private void inventory(Player p)
    {
       System.out.println("\nInventory\n" + "Weapons\n" + p.getWeaponInventory());
    }
