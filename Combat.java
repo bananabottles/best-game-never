@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Random;
 
 public class Combat
 {
@@ -6,8 +7,9 @@ public class Combat
    // playerStats and enemyStats
    
    Scanner keyboard = new Scanner(System.in);
-   Player p1;
-   Enemy e1;
+   private Player p1;
+   private Enemy e1;
+   private Random rand = new Random();
    
    public Combat()
    {
@@ -66,13 +68,30 @@ public class Combat
             return true;
       }   
    }
-      
+   //Damage calculations   
    private void attack(int w)
    {
-      e1.hurt(p1.attack(w));
+      e1.hurt(p1.attack(w));//Enemy takes dmg
+      
       if(e1.isDead() == false)
-      {
-         p1.hurt(e1.getDamage());
+      {  if (e1.getAgi() > p1.getAgi())//If the enemy has better aim than the player evasion
+         {
+            p1.hurt(e1.getDamage());//Player takes dmg
+         }
+         
+         else if (p1.getAgi() > e1.getAgi())
+            {
+               int eva = rand.nextInt(100);
+                  if(eva < 25)
+                     {
+                        System.out.println("Enemy missed! ");//Enemy misses attack
+                     }
+                  else
+                     {
+                        p1.hurt(e1.getDamage());//Player takes dmg
+                     }   
+                     
+            }
       }
    }
    

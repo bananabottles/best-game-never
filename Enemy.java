@@ -80,7 +80,8 @@ public class Enemy
       maxhp = 20 + (double)(plevel * (rand.nextInt(5) + 4)) * 0.4;
       damage = 5 + (double)(plevel * (2 + rand.nextInt(4))) * 0.3;
       temphp = maxhp;
-      exp = 40 +(5 * plevel);
+      agi = rand.nextDouble();//0.0 to 0.9
+      exp = 40 +(5 * plevel); //Change to boost level
       System.out.println("Common enemy made");
    }
    
@@ -103,6 +104,11 @@ public class Enemy
    {
       return eName;
    }
+   
+   public double getAgi()
+      {
+        return agi;
+      }
    //used by Combat when the enemy dies so the player gets experience for it
    public int giveExp()
    {
@@ -122,10 +128,6 @@ public class Enemy
    public void setDamage(double d)
    {
       damage = d;
-   }
-   public void setName(String n)
-   {
-      eName = n;
    }
    
    public double getTemphp()
@@ -149,7 +151,7 @@ public class Enemy
       temphp -= s; //hurts the enemy by the amount s
       System.out.println("You deal " + (int)s + " damage");
       showHealth();
-      if(temphp <= 0) //enemy dies when health reaches zero 
+      if(temphp < 1) //enemy dies when health reaches zero 
       {
          System.out.println("Enemy is dead");
          die = true;

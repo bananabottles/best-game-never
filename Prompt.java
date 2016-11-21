@@ -5,6 +5,7 @@ public class Prompt
    private Scanner keyboard = new Scanner(System.in);
    private int direction;
    private int choice;
+   private int info;
    Combat combat = new Combat();
    Player p1;
    Random rand = new Random();
@@ -52,7 +53,9 @@ public class Prompt
             case 2:
                inventory(p); //opens the inventory, allowing the player to view equipped gear, to view stored gear, and to equip and unequip gear
                break;
-            case 3:  //is going to show the player their stats most likely, and is where they get upgrade points to upgrade a stat when they level up
+            case 3: 
+               vueSkills(p); //is going to show the player their stats most likely, and is where they get upgrade points to upgrade a stat when they level up
+               break;
             case 4:  //options will provide a save function and an exit function at least
             case 5:  //exit will be in options, so this is just for testing, do not keep for final but may replace with a new option
                System.out.println("Goodbye");
@@ -101,4 +104,44 @@ public class Prompt
    {
       System.out.println("\nInventory\n" + "Weapons\n" + p.getWeaponInventory());
    }
+   
+    public void vueSkills(Player p)
+      {
+         //Displays your skills
+         System.out.println("Your stats are great! " + p.getStats());
+         
+         //Skill point System
+         if(p.getPoint() >= 1)
+            {
+               System.out.println("You have a skill point pick a stat to increase \n 1.Attack   2. Defense  3. Health   4. Agility");
+                  info = keyboard.nextInt();
+                  
+                  switch(info)
+                     {
+                        case 1:
+                           p.addAtt(.1);
+                           p.usedPoint(1);
+                           break;
+                        case 2:
+                           p.addDef(.1);
+                           p.usedPoint(1);
+                           break;
+                        case 3:
+                           p.addMaxHp(10);
+                           p.usedPoint(1);
+                           break;
+                        case 4:
+                           p.addAgi(.1);
+                           p.usedPoint(1);
+                           break;      
+                           
+                     }
+               
+            }
+            //End of Skill point System
+            
+           
+         
+         
+      }
 }

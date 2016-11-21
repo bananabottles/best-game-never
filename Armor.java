@@ -101,9 +101,4 @@ public class Armor extends Gear
    {
       return "Armor\nName: " + super.getItemName() + "\nArmor: " + armor + "\nWeight: " + super.getWeight() + "\nRarity: " + super.getRarity() + "\nSlot: " + slot + "\n";
    }
-   public String details()
-   {
-      return "" + super.getItemName() + ": D-" + (int)armor + " W-" + super.getWeight() + " R- " + super.getRarity();
-   }
-
 }
