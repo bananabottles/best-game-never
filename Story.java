@@ -14,11 +14,16 @@ public class Story
    {
       if(a.getName().equals("Shipwreck") && currentStep == 1)
       {
-         System.out.println("I was chased down the beach by a small creature, it seems they like the geyser");
+         System.out.println("Go east to the geyser to face");
       }
       else if(a.getName().equals("Geyser") && currentStep == 1)
       {
          System.out.println("A creature runs at you, prepare to defend yourself");
+         currentStep++;
+      }
+      else if(a.getName().equals("Lake of Health") && currentStep == 2)
+      {
+         System.out.println("This lake heals you to full health");
          currentStep++;
       }
          
