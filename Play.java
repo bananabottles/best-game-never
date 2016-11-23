@@ -26,7 +26,8 @@ public class Play
       player.setArmor1(0);
       player.setArmor2(0);
       
-      Prompt prompt = new Prompt();
+      Story story = new Story();
+      Prompt prompt = new Prompt(story);
       Map map1 = new Map("Moon 1", 1);
       int result = 0;
       prompt.enterArea(map1.getCurrentArea(), player);
