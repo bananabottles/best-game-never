@@ -10,6 +10,9 @@ public class Area
    private int combatDifficulty = 0;
    private boolean returnFight = false;
    private Boss bossEnemy = null;
+   private int openStep = 0;
+   private char subStep = 'a';
+   
    /*
    0 - combat
    1 - easy bias
@@ -24,7 +27,7 @@ public class Area
    {
    }
    
-   public Area(int r, int c, int combatC, int combatD, Boss boss, String name, String descr)
+   public Area(int r, int c, int combatC, int combatD, Boss boss, int open, String name, String descr)
    {
       row = r;
       column = c;
@@ -32,6 +35,9 @@ public class Area
       areaDescription = descr;
       combatChance = combatC;
       combatDifficulty = combatD;
+      bossEnemy = boss;
+      openStep = open;
+      
    }
    
    public String getName()
@@ -52,6 +58,16 @@ public class Area
    public int getColumn()
    {
       return column;
+   }
+   
+   public char getSubStep()
+   {
+      return subStep;
+   }
+   
+   public int getOpenStep()
+   {
+      return openStep;
    }
    
    public int getCombatChance() // number between 0 and 99, enter 30 for a 30% chance
