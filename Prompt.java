@@ -9,9 +9,11 @@ public class Prompt
    Combat combat = new Combat();
    Player p1;
    Random rand = new Random();
+   private Story story;
    
-   public Prompt()
+   public Prompt(Story s)
    {
+      story = s;
    }
    /**
    this runs when a player enters an area to show the player their location and to determine whether or not combat occurs and what level of combat it would be
@@ -22,6 +24,7 @@ public class Prompt
    {
       p1 = p;
       System.out.println("You just entered: " + a.getName());
+      story.loadStory(a, p);
       int num = rand.nextInt(100);
       if(num < a.getCombatChance() || a.getReturnFight() == true) //need to make a chance for combat, and a difficulty indicator instead of this
       {
@@ -80,16 +83,16 @@ public class Prompt
       switch(direction)
       {
          case 1:
-            map.moveNorth();
+            map.moveNorth(story.getCurrentStep());
             break;
          case 2:
-            map.moveSouth();
+            map.moveSouth(story.getCurrentStep());
             break;
          case 3:
-            map.moveEast();
+            map.moveEast(story.getCurrentStep());
             break;
          case 4:
-            map.moveWest();
+            map.moveWest(story.getCurrentStep());
             break;
          default:
             System.out.println("Error, invalid input");
