@@ -65,64 +65,76 @@ public class Map
       newIndex++;
    }
    
-   public void moveNorth(int step)
+   public boolean moveNorth(int step)
    {
+      boolean move = false;
       int row = currentArea.getRow();
       int column = currentArea.getColumn();
       if(row < 4 && coordinate[row+1][column].getOpenStep() <= step) //Story is organized into steps, and each area is set to open at a specific step
       {
          previousArea = coordinate[row][column];
          currentArea = coordinate[row + 1][column];
+         move = true;
       }
       else
       {
          System.out.println("unable to travel North");
       }
+      return move;
    }
    
-   public void moveSouth(int step)
+   public boolean moveSouth(int step)
    {
+      boolean move = false;
       int row = currentArea.getRow();
       int column = currentArea.getColumn();
       if(row > 0 && coordinate[row-1][column].getOpenStep() <= step)
       {
          previousArea = coordinate[row][column];
          currentArea = coordinate[row - 1][column];
+         move = true;
       }
       else
       {
          System.out.println("unable to travel South");
       }
+      return move;
    }
    
-   public void moveEast(int step)
+   public boolean moveEast(int step)
    {
+      boolean move = false;
       int row = currentArea.getRow();
       int column = currentArea.getColumn();
       if(column < 4 && coordinate[row][column+1].getOpenStep() <= step)
       {
          previousArea = coordinate[row][column];
          currentArea = coordinate[row][column + 1];
+         move = true;
       }
       else
       {
          System.out.println("unable to travel East");
       }
+      return move;
    }
    
-   public void moveWest(int step)
+   public boolean moveWest(int step)
    {
+      boolean move = false;
       int row = currentArea.getRow();
       int column = currentArea.getColumn();
       if(column > 0 && coordinate[row][column-1].getOpenStep() <= step)
       {
          previousArea = coordinate[row][column];
          currentArea = coordinate[row][column - 1];
+         move = true;
       }
       else
       {
          System.out.println("unable to travel West");
       }
+      return move;
    }
    
    public void setCurrentArea(int r, int c)
@@ -141,7 +153,7 @@ public class Map
       
       if(currentArea.getRow() + 1 <= 4)
       {
-         if(step <= coordinate[currentArea.getRow() + 1][currentArea.getColumn()].getOpenStep())
+         if(step >= coordinate[currentArea.getRow() + 1][currentArea.getColumn()].getOpenStep())
          {
             options += "North: " + coordinate[currentArea.getRow() + 1][currentArea.getColumn()].getName() + "\n";
          }
@@ -149,15 +161,17 @@ public class Map
          {
             options += "North: " + coordinate[currentArea.getRow() + 1][currentArea.getColumn()].getName() + " (locked)\n";
          }
+         System.out.println("" + step + " " + coordinate[currentArea.getRow() + 1][currentArea.getColumn()].getOpenStep());
       }
       else
       {
          options += "North: This path is blocked\n";
       }
       
+      
       if(currentArea.getRow() - 1 >= 0)
       {
-         if(step <= coordinate[currentArea.getRow() - 1][currentArea.getColumn()].getOpenStep())
+         if(step >= coordinate[currentArea.getRow() - 1][currentArea.getColumn()].getOpenStep())
          {
             options += "South: " + coordinate[currentArea.getRow() - 1][currentArea.getColumn()].getName() + "\n";
          }
@@ -165,15 +179,17 @@ public class Map
          {
             options += "South: " + coordinate[currentArea.getRow() - 1][currentArea.getColumn()].getName() + " (locked)\n";
          }
+         System.out.println("" + step + " " + coordinate[currentArea.getRow() - 1][currentArea.getColumn()].getOpenStep());
       }
       else
       {
          options += "South: This path is blocked\n";
       }
       
+      
       if(currentArea.getColumn() + 1 <= 4)
       {
-         if(step <= coordinate[currentArea.getColumn()][currentArea.getColumn() + 1].getOpenStep())
+         if(step >= coordinate[currentArea.getRow()][currentArea.getColumn() + 1].getOpenStep())
          {
             options += "East: " + coordinate[currentArea.getRow()][currentArea.getColumn() + 1].getName() + "\n";
          }
@@ -181,15 +197,17 @@ public class Map
          {
             options += "East: " + coordinate[currentArea.getRow()][currentArea.getColumn() + 1].getName() + " (locked)\n";
          }
+         System.out.println("" + step + " " + coordinate[currentArea.getColumn()][currentArea.getColumn() + 1].getOpenStep() + " " + currentArea.getRow() + " " + currentArea.getColumn());
       }
       else
       {
          options += "East: This path is blocked\n";
       }
       
+      
       if(currentArea.getColumn() - 1 >= 0)
       {
-         if(step <= coordinate[currentArea.getColumn()][currentArea.getColumn() - 1].getOpenStep())
+         if(step >= coordinate[currentArea.getRow()][currentArea.getColumn() - 1].getOpenStep())
          {
             options += "West: " + coordinate[currentArea.getRow()][currentArea.getColumn() - 1].getName() + "\n";
          }
@@ -197,6 +215,7 @@ public class Map
          {
             options += "West: " + coordinate[currentArea.getRow()][currentArea.getColumn() - 1].getName() + " (locked)\n";
          }
+         System.out.println("" + step + " " + coordinate[currentArea.getColumn()][currentArea.getColumn() - 1].getOpenStep());
       }
       else
       {
@@ -250,7 +269,7 @@ public class Map
       Area Well = new Area(2, 0, 100, 1, null, 3, "Water Well", "(description here).");
       addNewArea(Well);
       
-      Area Lake = new Area(2, 1, 0, 1, null, 2, "Lake of Health", "(description here).");
+      Area Lake = new Area(2, 1, 0, 1, new Boss(), 2, "Lake of Health", "(description here).");
       addNewArea(Lake);
       
       Area Field = new Area(2, 2, 0, 1, null, 3, "Field of Tall Grass", "(description here).");

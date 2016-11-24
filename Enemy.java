@@ -87,7 +87,10 @@ public class Enemy
       //exp *= 2;
    }
    
-   
+   public void setName(String name)
+   {
+      eName = name;
+   }
    
    private void makeCommonEnemy(int plevel)
    {

@@ -30,6 +30,10 @@ public class Prompt
       {
          combat.runCombat(p, a, a.getCombatDifficulty());
       }
+      else if(a.hasBoss())
+      {
+         combat.runBossFight(p, a);
+      }
       else
       {
          System.out.println("There are no hostiles here right now");
@@ -77,6 +81,7 @@ public class Prompt
    */   
    private void travel(Map map)
    {
+      boolean move = false;
       System.out.println(map.getCurrentArea().getDescription());
       System.out.println(map.getTravelOptions(story.getCurrentStep()));
       System.out.println("\nEnter 1, 2, 3 or 4 to travel North, South, East, and West Respectively:");
@@ -84,22 +89,25 @@ public class Prompt
       switch(direction)
       {
          case 1:
-            map.moveNorth(story.getCurrentStep());
+            move = map.moveNorth(story.getCurrentStep());
             break;
          case 2:
-            map.moveSouth(story.getCurrentStep());
+            move = map.moveSouth(story.getCurrentStep());
             break;
          case 3:
-            map.moveEast(story.getCurrentStep());
+            move = map.moveEast(story.getCurrentStep());
             break;
          case 4:
-            map.moveWest(story.getCurrentStep());
+            move = map.moveWest(story.getCurrentStep());
             break;
          default:
             System.out.println("Error, invalid input");
             break;
       }
-      enterArea(map.getCurrentArea(), p1);
+      if(move)
+      {
+         enterArea(map.getCurrentArea(), p1);
+      }
    }
    /**
    Displays the user's inventory (should be weapons and armor, plus any items and currency if we include those

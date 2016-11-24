@@ -18,15 +18,15 @@ public class Weapon extends Gear
       {
          case 'C':
             common = 0.9;
-            rare = 0.98;
+            rare = 1.0;
             break;
          case 'H':
             common = 0.4;
-            rare = 0.9;
+            rare = 1.0;
             break;
          case 'B':
             common = 0.0;
-            rare = 0.5;
+            rare = 0.0;
             break;
       }
       

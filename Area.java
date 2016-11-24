@@ -12,7 +12,7 @@ public class Area
    private Boss bossEnemy = null;
    private int openStep = 0;
    private char subStep = 'a';
-   
+   private boolean defeated = false;
    /*
    0 - combat
    1 - easy bias
@@ -65,6 +65,11 @@ public class Area
       return subStep;
    }
    
+   public boolean getDefeat()
+   {
+      return defeated;
+   }
+   
    public int getOpenStep()
    {
       return openStep;
@@ -88,6 +93,23 @@ public class Area
    public Boss getBossEnemy()
    {
       return bossEnemy;
+   }
+   
+   public boolean hasBoss()
+   {
+      if(bossEnemy == null)
+      {
+         return false;
+      }
+      else
+      {
+         return true;
+      }
+   }
+   
+   public void setDefeat(boolean b)
+   {
+      defeated = b;
    }
    
    public void setAreaName(String name)
