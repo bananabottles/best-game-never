@@ -17,16 +17,16 @@ public class Weapon extends Gear
       switch(difficulty)
       {
          case 'C':
-            common = 0.7;
-            rare = 0.9;
+            common = 0.9;
+            rare = 1.0;
             break;
          case 'H':
-            common = 0.3;
-            rare = 0.8;
+            common = 0.4;
+            rare = 1.0;
             break;
          case 'B':
             common = 0.0;
-            rare = 0.5;
+            rare = 0.0;
             break;
       }
       
@@ -94,7 +94,7 @@ public class Weapon extends Gear
    
    public String details()
    {
-      return "" + super.getItemName() + ": D-" + (int)damage + " W-" + super.getWeight() + " R- " + super.getRarity();
+      return "" + super.getItemName() + ": Damage-" + (int)damage + " Weight-" + super.getWeight() + " Rarity- " + super.getRarity();
    }
    
    

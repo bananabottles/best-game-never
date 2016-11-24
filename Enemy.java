@@ -14,6 +14,13 @@ public class Enemy
    private boolean die = false;
    private double damage = 10.0;
    private int exp = 40; //how much base exp is given to player
+   //Difficulty Letter 
+   private char C = 'C';
+   private char H = 'H';
+   private char B = 'B';
+   private char diff;
+   
+   
    
    private Random rand = new Random();
    
@@ -29,11 +36,18 @@ public class Enemy
       if(probability < 95)
       {
          makeCommonEnemy(pl);
+         diff = C;
       }
       else
       {
          makeHardEnemy(pl);
+         diff = H;
       }
+   }
+   
+   public char getEnemyRank() //Return rank of Enemy
+   {
+      return diff;
    }
    
    public Enemy(int pl, int enemyType)
@@ -73,7 +87,10 @@ public class Enemy
       //exp *= 2;
    }
    
-   
+   public void setName(String name)
+   {
+      eName = name;
+   }
    
    private void makeCommonEnemy(int plevel)
    {
@@ -83,6 +100,7 @@ public class Enemy
       agi = rand.nextDouble();//0.0 to 0.9
       exp = 40 +(5 * plevel); //Change to boost level
       System.out.println("Common enemy made");
+      
    }
    
    private void makeHardEnemy(int plevel)

@@ -330,7 +330,7 @@ public class Player
       int loop = weapons.size();
       for(int i = 0; i < loop; i++)
       {
-         list += "" + i + "-- " + weapons.get(i).details() + "\n";
+         list += "" + (i + 1) + "-- " + weapons.get(i).details() + "\n";
       }
       return list;
    }

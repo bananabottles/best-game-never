@@ -24,6 +24,7 @@ public class Story
       else if(a.getName().equals("Lake of Health") && currentStep == 2)
       {
          System.out.println("This lake heals you to full health");
+         a.getBossEnemy().updateBoss("Kenny-Sama", p.getLvl());
          currentStep++;
       }
          

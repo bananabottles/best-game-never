@@ -9,9 +9,11 @@ public class Prompt
    Combat combat = new Combat();
    Player p1;
    Random rand = new Random();
+   private Story story;
    
-   public Prompt()
+   public Prompt(Story s)
    {
+      story = s;
    }
    /**
    this runs when a player enters an area to show the player their location and to determine whether or not combat occurs and what level of combat it would be
@@ -22,10 +24,15 @@ public class Prompt
    {
       p1 = p;
       System.out.println("You just entered: " + a.getName());
+      story.loadStory(a, p);
       int num = rand.nextInt(100);
       if(num < a.getCombatChance() || a.getReturnFight() == true) //need to make a chance for combat, and a difficulty indicator instead of this
       {
          combat.runCombat(p, a, a.getCombatDifficulty());
+      }
+      else if(a.hasBoss())
+      {
+         combat.runBossFight(p, a);
       }
       else
       {
@@ -43,7 +50,7 @@ public class Prompt
       boolean exit = false;
       do
       {
-         System.out.println("Enter a number for an action:\n1 - Travel\n2 - Inventory\n3 - Skills\n4 - Options\n5 - Exit");
+         System.out.println("Enter a number for an action:\n1 - Travel\n2 - Inventory\n3 - Skills " + p.getPoint() + "\n4 - Options\n5 - Exit");
          choice = keyboard.nextInt();
          switch(choice)
          {
@@ -74,28 +81,33 @@ public class Prompt
    */   
    private void travel(Map map)
    {
+      boolean move = false;
       System.out.println(map.getCurrentArea().getDescription());
+      System.out.println(map.getTravelOptions(story.getCurrentStep()));
       System.out.println("\nEnter 1, 2, 3 or 4 to travel North, South, East, and West Respectively:");
       direction = keyboard.nextInt();
       switch(direction)
       {
          case 1:
-            map.moveNorth();
+            move = map.moveNorth(story.getCurrentStep());
             break;
          case 2:
-            map.moveSouth();
+            move = map.moveSouth(story.getCurrentStep());
             break;
          case 3:
-            map.moveEast();
+            move = map.moveEast(story.getCurrentStep());
             break;
          case 4:
-            map.moveWest();
+            move = map.moveWest(story.getCurrentStep());
             break;
          default:
             System.out.println("Error, invalid input");
             break;
       }
-      enterArea(map.getCurrentArea(), p1);
+      if(move)
+      {
+         enterArea(map.getCurrentArea(), p1);
+      }
    }
    /**
    Displays the user's inventory (should be weapons and armor, plus any items and currency if we include those
@@ -103,6 +115,41 @@ public class Prompt
    private void inventory(Player p)
    {
       System.out.println("\nInventory\n" + "Weapons\n" + p.getWeaponInventory());
+      System.out.println("Would you like to equiped a new weapon? 1.(Y)    2.(N)");
+      int yana = keyboard.nextInt();
+      
+      switch(yana)
+      {
+      case(1):
+         System.out.println("Which weapon would you like to replace?\n" + p.getWeaponsEquipped());
+         int which = keyboard.nextInt();
+         System.out.println("Which weapon would you like to use?\n" + p.getWeaponInventory());
+         int whichwep = keyboard.nextInt();
+         switch(which)
+         {
+            case(1):
+               p1.setWeapon1(whichwep - 1);
+               System.out.println("Current set:\n" + p.getWeaponsEquipped() + "\n");
+               break; 
+            case(2):
+               p1.setWeapon2(whichwep - 1);
+               System.out.println("Current set:\n" + p.getWeaponsEquipped() + "\n");
+               break;
+            case(3):
+               p1.setWeapon3(whichwep - 1);
+               System.out.println("Current set:\n" + p.getWeaponsEquipped() + "\n");
+               break;
+            case(4):
+               p1.setWeapon4(whichwep - 1);
+               System.out.println("Current set:\n" + p.getWeaponsEquipped() + "\n");         
+               break;
+         }
+         break;
+         
+      case(2):
+         break;
+      }
+      
    }
    
     public void vueSkills(Player p)
@@ -113,7 +160,7 @@ public class Prompt
          //Skill point System
          if(p.getPoint() >= 1)
             {
-               System.out.println("You have a skill point pick a stat to increase \n 1.Attack   2. Defense  3. Health   4. Agility");
+               System.out.println("You have " + p.getPoint() + " skill point(s) pick a stat to increase \n 1.Attack   2. Defense  3. Health   4. Agility");
                   info = keyboard.nextInt();
                   
                   switch(info)
