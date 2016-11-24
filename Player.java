@@ -20,11 +20,13 @@ public class Player
    private double def = 1.0;
    private double maxhp = 100.0;
    private double temphp = 100.0;
-   private double agi = 1.0;
+   private double agi = .3;
    private double cr = 1.0;
    private int lvl = 1;
    private int nextLvlExp = 100;
    private int totalExp = 0;
+   private int point = 1;
+   private int usedpoint = 0;
    
    //construct player with name
    public Player(String namae)
@@ -78,8 +80,18 @@ public class Player
       return nextLvlExp;
    }
    
+   public int getPoint()
+   {
+      return point;
+   }
+   
+   public void usedPoint(int poi)
+      {  
+         usedpoint = poi;
+         point = point - usedpoint;  
+      }
    //mutator methods
-   public void addAtt(double attack)
+   public void addAtt(double attack) 
    {
       att += attack;
    }
@@ -115,10 +127,16 @@ public class Player
       while(totalExp >= nextLvlExp)
       {
          lvl++;
+         point++;
          nextLvlExp += 100+((lvl-1)*(25));
          System.out.println("You leveled up! You are now level " + lvl);
       }
    }
+   public String getStats()
+      {
+         String stats = ("Your level is: " + lvl + " HP: " + maxhp + " Attack: " + att + " Defense: " + def + " Agility: " + agi);
+           return (stats);
+      }
    
 
    public double attack(int slot)
@@ -312,8 +330,10 @@ public class Player
       int loop = weapons.size();
       for(int i = 0; i < loop; i++)
       {
-         list += "" + i + "-- " + weapons.get(i).details() + "\n";
+         list += "" + (i + 1) + "-- " + weapons.get(i).details() + "\n";
       }
       return list;
    }
+   
+   
 }  

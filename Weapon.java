@@ -94,7 +94,7 @@ public class Weapon extends Gear
    
    public String details()
    {
-      return "" + super.getItemName() + ": D-" + (int)damage + " W-" + super.getWeight() + " R- " + super.getRarity();
+      return "" + super.getItemName() + ": Damage-" + (int)damage + " Weight-" + super.getWeight() + " Rarity- " + super.getRarity();
    }
    
    
