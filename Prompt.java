@@ -6,6 +6,7 @@ public class Prompt
    private int direction;
    private int choice;
    private int info;
+   
    Combat combat = new Combat();
    Player p1;
    Random rand = new Random();
@@ -30,10 +31,6 @@ public class Prompt
       {
          combat.runCombat(p, a, a.getCombatDifficulty());
       }
-      else if(a.hasBoss())
-      {
-         combat.runBossFight(p, a);
-      }
       else
       {
          System.out.println("There are no hostiles here right now");
@@ -50,7 +47,7 @@ public class Prompt
       boolean exit = false;
       do
       {
-         System.out.println("Enter a number for an action:\n1 - Travel\n2 - Inventory\n3 - Skills " + p.getPoint() + "\n4 - Options\n5 - Exit");
+         System.out.println("Enter a number for an action:\n1 - Travel\n2 - Inventory\n3 - Skills\n4 - Options\n5 - Exit");
          choice = keyboard.nextInt();
          switch(choice)
          {
@@ -81,73 +78,66 @@ public class Prompt
    */   
    private void travel(Map map)
    {
-      boolean move = false;
       System.out.println(map.getCurrentArea().getDescription());
-      System.out.println(map.getTravelOptions(story.getCurrentStep()));
+      //System.out.println(map.getTravelOptions(story.getCurrentStep());
       System.out.println("\nEnter 1, 2, 3 or 4 to travel North, South, East, and West Respectively:");
       direction = keyboard.nextInt();
       switch(direction)
       {
          case 1:
-            move = map.moveNorth(story.getCurrentStep());
+            map.moveNorth(story.getCurrentStep());
             break;
          case 2:
-            move = map.moveSouth(story.getCurrentStep());
+            map.moveSouth(story.getCurrentStep());
             break;
          case 3:
-            move = map.moveEast(story.getCurrentStep());
+            map.moveEast(story.getCurrentStep());
             break;
          case 4:
-            move = map.moveWest(story.getCurrentStep());
+            map.moveWest(story.getCurrentStep());
             break;
          default:
             System.out.println("Error, invalid input");
             break;
       }
-      if(move)
-      {
-         enterArea(map.getCurrentArea(), p1);
-      }
+      enterArea(map.getCurrentArea(), p1);
    }
    /**
    Displays the user's inventory (should be weapons and armor, plus any items and currency if we include those
    */
    private void inventory(Player p)
    {
-      System.out.println("\nInventory\n" + "Weapons\n" + p.getWeaponInventory());
+      System.out.println("\nInventory\n" + "Weapons\n"  + p.getWeaponInventory() + "Armor\n" + p.getArmorInventory());
+      System.out.println("Your current armor set is " + p.getArmorEquipped());
       System.out.println("Would you like to equiped a new weapon? 1.(Y)    2.(N)");
       int yana = keyboard.nextInt();
       
       switch(yana)
       {
       case(1):
-         System.out.println("Which weapon would you like to replace?\n" + p.getWeaponsEquipped());
-         int which = keyboard.nextInt();
-         System.out.println("Which weapon would you like to use?\n" + p.getWeaponInventory());
-         int whichwep = keyboard.nextInt();
-         switch(which)
-         {
-            case(1):
-               p1.setWeapon1(whichwep - 1);
-               System.out.println("Current set:\n" + p.getWeaponsEquipped() + "\n");
-               break; 
-            case(2):
-               p1.setWeapon2(whichwep - 1);
-               System.out.println("Current set:\n" + p.getWeaponsEquipped() + "\n");
-               break;
-            case(3):
-               p1.setWeapon3(whichwep - 1);
-               System.out.println("Current set:\n" + p.getWeaponsEquipped() + "\n");
-               break;
-            case(4):
-               p1.setWeapon4(whichwep - 1);
-               System.out.println("Current set:\n" + p.getWeaponsEquipped() + "\n");         
-               break;
-         }
-         break;
-         
+      System.out.println("Which weapon would you like to replace?\n" + p.getWeaponsEquipped());
+      int which = keyboard.nextInt();
+      System.out.println("Which weapon would you like to use?\n" + p.getWeaponInventory());
+      int whichwep = keyboard.nextInt();
+      switch(which)
+      {
+      case(1):
+         p1.setWeapon(which - 1, whichwep -1);
+         break; 
       case(2):
+         p1.setWeapon(which - 1, whichwep -1);
          break;
+      case(3):
+         p1.setWeapon(which - 1, whichwep -1);
+         break;
+      case(4):
+         p1.setWeapon(which - 1, whichwep -1);
+         break;
+      }
+      break;
+      
+      case(2):
+      break;
       }
       
    }
@@ -155,12 +145,12 @@ public class Prompt
     public void vueSkills(Player p)
       {
          //Displays your skills
-         System.out.println("Your stats are great! " + p.getStats());
+         System.out.format("Your stats are great! " + p.getStats());
          
          //Skill point System
          if(p.getPoint() >= 1)
             {
-               System.out.println("You have " + p.getPoint() + " skill point(s) pick a stat to increase \n 1.Attack   2. Defense  3. Health   4. Agility");
+               System.out.println("You have " + p.getPoint() + " skill point pick a stat to increase \n 1.Attack   2. Defense  3. Health   4. Agility");
                   info = keyboard.nextInt();
                   
                   switch(info)

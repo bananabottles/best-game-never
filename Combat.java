@@ -61,53 +61,6 @@ public class Combat
       }
    }
    
-   public void runBossFight(Player p, Area a) //int difficulty)
-   {
-      p1 = p;
-      e1 = a.getBossEnemy();
-      int number;
-      boolean stay = true;
-      System.out.println("Entering Boss Fight against: " + e1.getName());
-      do
-      {
-         System.out.println("Enemy HP: " + e1.getHealth());
-         System.out.println("What do yo want to do?\n1-Attack\n2-Items");
-         number = keyboard.nextInt(); //your choice of what to do
-         if(number == 3)
-         {
-            System.out.println("You cannot run from a boss fight");
-         }
-         else
-         {
-            stay = select(number); //will return true for everything except run
-         }
-      }while(stay == true && e1.isDead() == false);
-      
-      if(stay == true && e1.isDead() == true)
-      {
-         System.out.println("You defeated " + e1.getName());
-         System.out.print("EXP: " + p1.getExp() + "/" + p1.getExpToLevel() + " -> ");
-         p1.addExp(e1.giveExp());
-         System.out.print("" + p1.getExp() + "/" + p1.getExpToLevel() + "\n");
-         a.setDefeat(true);
-         
-         //Drop Weapon 
-         pickUp = a.getBossEnemy().getWeaponDrop();
-         p1.pickUpWeapon(pickUp);
-         System.out.println("You just got a " + pickUp.details());
-         
-        
-         
-         //give player experience which should be a variable unique for each enemy depending on their difficulty and level
-         a.setReturnFight(false);
-      }
-      else
-      {
-         System.out.println("Error, player should not be able to run from enemy");
-      }
-   }
-
-   
    private boolean select(int option)
    {
       switch(option)
