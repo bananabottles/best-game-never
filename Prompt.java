@@ -46,7 +46,7 @@ public class Prompt
       boolean exit = false;
       do
       {
-         System.out.println("Enter a number for an action:\n1 - Travel\n2 - Inventory\n3 - Skills\n4 - Options\n5 - Exit");
+         System.out.println("Enter a number for an action:\n1 - Travel\n2 - Inventory\n3 - Skills " + p.getPoint() + "\n4 - Options\n5 - Exit");
          choice = keyboard.nextInt();
          switch(choice)
          {
@@ -78,7 +78,7 @@ public class Prompt
    private void travel(Map map)
    {
       System.out.println(map.getCurrentArea().getDescription());
-      System.out.println(map.getTravelOptions(story.getCurrentStep());
+      System.out.println(map.getTravelOptions(story.getCurrentStep()));
       System.out.println("\nEnter 1, 2, 3 or 4 to travel North, South, East, and West Respectively:");
       direction = keyboard.nextInt();
       switch(direction)
@@ -113,34 +113,33 @@ public class Prompt
       switch(yana)
       {
       case(1):
-      System.out.println("Which weapon would you like to replace?\n" + p.getWeaponsEquipped());
-      int which = keyboard.nextInt();
-      System.out.println("Which weapon would you like to use?\n" + p.getWeaponInventory());
-      int whichwep = keyboard.nextInt();
-      switch(which)
-      {
-      case(1):
-         p1.setWeapon1(whichwep - 1);
-         System.out.println("Current set:\n" + p.getWeaponsEquipped());
-         break; 
-      case(2):
-         p1.setWeapon2(whichwep - 1);
-         System.out.println("Current set:\n" + p.getWeaponsEquipped());
+         System.out.println("Which weapon would you like to replace?\n" + p.getWeaponsEquipped());
+         int which = keyboard.nextInt();
+         System.out.println("Which weapon would you like to use?\n" + p.getWeaponInventory());
+         int whichwep = keyboard.nextInt();
+         switch(which)
+         {
+            case(1):
+               p1.setWeapon1(whichwep - 1);
+               System.out.println("Current set:\n" + p.getWeaponsEquipped() + "\n");
+               break; 
+            case(2):
+               p1.setWeapon2(whichwep - 1);
+               System.out.println("Current set:\n" + p.getWeaponsEquipped() + "\n");
+               break;
+            case(3):
+               p1.setWeapon3(whichwep - 1);
+               System.out.println("Current set:\n" + p.getWeaponsEquipped() + "\n");
+               break;
+            case(4):
+               p1.setWeapon4(whichwep - 1);
+               System.out.println("Current set:\n" + p.getWeaponsEquipped() + "\n");         
+               break;
+         }
          break;
-      case(3):
-         p1.setWeapon3(whichwep - 1);
-         System.out.println("Current set:\n" + p.getWeaponsEquipped());
-         break;
-      case(4):
-         p1.setWeapon4(whichwep - 1);
-         System.out.println("Current set:\n" + p.getWeaponsEquipped());
          
-         break;
-      }
-      break;
-      
       case(2):
-      break;
+         break;
       }
       
    }
@@ -153,7 +152,7 @@ public class Prompt
          //Skill point System
          if(p.getPoint() >= 1)
             {
-               System.out.println("You have a skill point pick a stat to increase \n 1.Attack   2. Defense  3. Health   4. Agility");
+               System.out.println("You have " + p.getPoint() + " skill point(s) pick a stat to increase \n 1.Attack   2. Defense  3. Health   4. Agility");
                   info = keyboard.nextInt();
                   
                   switch(info)

@@ -17,12 +17,12 @@ public class Weapon extends Gear
       switch(difficulty)
       {
          case 'C':
-            common = 0.7;
-            rare = 0.9;
+            common = 0.9;
+            rare = 0.98;
             break;
          case 'H':
-            common = 0.3;
-            rare = 0.8;
+            common = 0.4;
+            rare = 0.9;
             break;
          case 'B':
             common = 0.0;
