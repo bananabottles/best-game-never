@@ -16,15 +16,18 @@ public class Play
       player.pickUpWeapon(new Weapon(player.getLvl(), 'C'));
       player.pickUpWeapon(new Weapon(player.getLvl(), 'C'));
       
-      player.setWeapon1(0); //setting weapon slots
-      player.setWeapon2(0);
-      player.setWeapon3(0);
-      player.setWeapon4(0);
+      player.setWeapon(0,0); //setting weapon slots
+      player.setWeapon(1,0);
+      player.setWeapon(2,0);
+      player.setWeapon(3,0);
       
       player.pickUpArmor(new Armor(player.getLvl(), 'C'));
       player.pickUpArmor(new Armor(player.getLvl(), 'C'));
-      player.setArmor1(0);
-      player.setArmor2(0);
+      player.pickUpArmor(new Armor(player.getLvl(), 'C'));
+      player.pickUpArmor(new Armor(player.getLvl(), 'C'));
+
+      player.setArmor(0,0);
+      player.setArmor(1,0);
       
       Story story = new Story();
       Prompt prompt = new Prompt(story);

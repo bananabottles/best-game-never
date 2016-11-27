@@ -10,8 +10,7 @@ public class Gear
    private String rarity = "";
    
    private Random rand = new Random();
-
-  
+   
   
    public Gear(int playerLvl)
    {
@@ -54,4 +53,6 @@ public class Gear
    {
       return weight;
    }
-}
+   
+   
+  }

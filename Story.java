@@ -12,6 +12,7 @@ public class Story
    
    public void loadStory(Area a, Player p)
    {
+      
       if(a.getName().equals("Shipwreck") && currentStep == 1)
       {
          System.out.println("Go east to the geyser to face");
@@ -24,10 +25,12 @@ public class Story
       else if(a.getName().equals("Lake of Health") && currentStep == 2)
       {
          System.out.println("This lake heals you to full health");
-         a.getBossEnemy().updateBoss("Kenny-Sama", p.getLvl());
          currentStep++;
       }
-         
+      if (a.getName().equals("River Outlet") && currentStep == 3)
+      {
+      }
+      
    
    }
    

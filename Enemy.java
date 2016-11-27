@@ -87,10 +87,7 @@ public class Enemy
       //exp *= 2;
    }
    
-   public void setName(String name)
-   {
-      eName = name;
-   }
+   
    
    private void makeCommonEnemy(int plevel)
    {
@@ -98,7 +95,7 @@ public class Enemy
       damage = 5 + (double)(plevel * (2 + rand.nextInt(4))) * 0.3;
       temphp = maxhp;
       agi = rand.nextDouble();//0.0 to 0.9
-      exp = 40 +(5 * plevel); //Change to boost level
+      exp = 500 +(5 * plevel); //Change to boost level
       System.out.println("Common enemy made");
       
    }
