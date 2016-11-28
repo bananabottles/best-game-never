@@ -25,5 +25,14 @@ public class Boss extends Enemy
    {
       return weapon;
    }
+   public void setDefeated(Boolean b)
+   {
+      defeated = b;
+   } 
+   
+   public boolean getDefeated()
+   {
+      return defeated;
+   }
 
 }

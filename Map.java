@@ -8,7 +8,11 @@ public class Map
    private int newIndex = 0;  //increments for each area added to create coordinates for each area
    private Area previousArea = null;
    private Area nextArea = null;
-   
+   private Area startingAreaMap1 = null;
+   private Area startingAreaMap2 = null;
+   private Area startingAreaMap3 = null;
+   //private Area startingAreaMap4 = null;
+   private int mapLoaded = 0;
    public Map(String name)
    {
       mapName = name;
@@ -21,12 +25,15 @@ public class Map
       {
          case 1:
             loadMap1();
+            mapLoaded = 1;
             break;
          case 2:
             loadMap2();
+            mapLoaded = 2;
             break;
          case 3:
             loadMap3();
+            mapLoaded = 3;
             break;
          default:
             System.out.println("Error: cannot load map " + load);
@@ -136,6 +143,25 @@ public class Map
       return move;
    }
    
+   public void moveBack()
+   {
+      switch(mapLoaded)
+      {
+         case 1:
+            currentArea = startingAreaMap1;
+            break;
+         case 2:
+            currentArea = startingAreaMap2;
+            break;
+         case 3:
+            currentArea = startingAreaMap3;
+            break;
+         default:
+            System.out.println("Error in dying");
+            break;
+      }
+   }
+   
    public void setCurrentArea(int r, int c)
    {
       currentArea = coordinate[r][c];
@@ -144,6 +170,11 @@ public class Map
    public Area getCurrentArea()
    {
       return currentArea;
+   }
+   
+   public Area getPreviousArea()
+   {
+      return previousArea;
    }
    
    public String getTravelOptions(int step)
@@ -227,85 +258,87 @@ public class Map
    {
 //row one
       //new Area( row#, column#, combatChance#, typeOfCombat#, bossObject, openStep#, Name string, description string with options for travel
-      Area Shore = new Area(0, 0, 0, 1, null, 1, "Balcony", "You glance into the sky and see the three moons.");
+      Area Shore = new Area(0, 0, 0, 1, null, 1, "Rocky Shore", "You find a rocky outcropping on the shore that gets progressively harder to maneuver.");
       addNewArea(Shore);  //adds a new area to coordinate[][] which is the array of areas that makes up the map
       
-      Area Start = new Area(0, 1, 0, 1, null, 1, "John's apartment", "A apartment studio located in the center of the city.\nJohn works, eats, sleeps, and does everything else here.");
+      Area Start = new Area(0, 1, 0, 1, null, 1, "Starting area", "You are at a campsite on the beach.");
+      startingAreaMap1 = Start;
       addNewArea(Start);
       setCurrentArea(0,1);
       
-      Area Ship = new Area(0, 2, 0, 1, null, 1, "Adam's Coffee Shop", "A whole in the wall coffee shop known for its scones and coffee, it seems more like a bar than a coffee shop.");
+      Area Ship = new Area(0, 2, 0, 1, null, 1, "Shipwreck", "You find the remains of a ship on the beach.");
       addNewArea(Ship);
       
-      Area Geyser = new Area(0, 3, 100, 1, null, 1, "Abbey Road", "The main road within the slums full of merchants, theives, fortune tellers, and anyone else trying to make quick cash.");
+      Area Geyser = new Area(0, 3, 100, 1, null, 1, "Geyser", "You arrive at a geyser that sprays refreshing water into the air.");
       addNewArea(Geyser);
       
-      Area Outlet = new Area(0, 4, 0, 1, null, 1, "Quartz Headquarters", "Quartz agency is a run down building located inside the slums, it is where all of the information brokers\nhave gathered and exchange valuable information.");
+      Area Outlet = new Area(0, 4, 100, 1, null, 3, "River Outlet", "You get to the mouth of the river.");
       addNewArea(Outlet);
       
 //row two
-      Area Cabin = new Area(1, 0, 0, 1, null, 3, "Seating area", "This is where John likes to unwind and stare upon the city.");
+      Area Cabin = new Area(1, 0, 100, 1, null, 3, "Deserted Cabin", "(description here).");
       addNewArea(Cabin);
       
-      Area Forest = new Area(1, 1, 0, 1, null, 2, "Garden Plaza", "A high end plaza located in the higher district, where the busy and rich can relax.");
+      Area Forest = new Area(1, 1, 100, 1, null, 2, "Clearing in the Forest", "(description here).");
       addNewArea(Forest);
       
-      Area Gravel = new Area(1, 2, 0, 1, null, 4, "Coffee shop basement", "Underground Adam keeps all of his equipment for spying.");
+      Area Gravel = new Area(1, 2, 100, 1, null, 3, "Gravel Path", "(description here).");
       addNewArea(Gravel);
       
-      Area Thorns = new Area(1, 3, 100, 1, null, 3, "Abbey Alley", "Popular hang out shady people and getting cheap watches, and LOTS of mugging.");
+      Area Thorns = new Area(1, 3, 100, 1, null, 3, "Thorny Woods", "(description here).");
       addNewArea(Thorns);
       
-      Area Bank = new Area(1, 4, 0, 1, null, 4, "Head Quarters Bathroom", "Bathroom with a strange door.");
+      Area Bank = new Area(1, 4, 100, 1, null, 3, "River Bank", "(description here).");
       addNewArea(Bank);
       
       
 //row three
-      Area Well = new Area(2, 0, 0, 1, null, 4, "Bar Lounge", "A place to meet exciting young people who drink and occasionally dance.");
+      Area Well = new Area(2, 0, 100, 1, null, 3, "Water Well", "(description here).");
       addNewArea(Well);
       
-      Area Lake = new Area(2, 1, 0, 1, new Boss(), 4, "VIP section", "International Drug Smuggler Daily rates this spot 10/10 for quality seats and quality drinks.");
+      Area Lake = new Area(2, 1, 0, 1, null, 2, "Lake of Health", "(description here).");
+      Lake.setHealingArea();
       addNewArea(Lake);
       
-      Area Field = new Area(2, 2, 0, 1, null, 5, "Gypsy Medical Center", "Recover from your injuries.");
+      Area Field = new Area(2, 2, 0, 1, new Boss(), 2, "Field of Tall Grass", "(description here).");
       addNewArea(Field);
       
-      Area Dark = new Area(2, 3, 25, 2, null, 5, "Dark Path", "Where the Gypsies gather their medical supplies.");
+      Area Dark = new Area(2, 3, 100, 2, null, 3, "Dark Path", "(description here).");
       addNewArea(Dark);
       
-      Area Bridge = new Area(2, 4, 10, 1, null, 5, "Gambling pit", "Illegal gambling, smoke filled rooms, smell of wine, and cheap perfume.");
+      Area Bridge = new Area(2, 4, 100, 1, null, 3, "Broken Bridge", "(description here).");
       addNewArea(Bridge);
 
 //row 4      
-      Area Farm = new Area(3, 0, 100, 1, null, 6, "Burger Joint", "You find the remains of a ship on the beach.");
+      Area Farm = new Area(3, 0, 100, 1, null, 3, "Abandoned Farm", "You find the remains of a ship on the beach.");
       addNewArea(Farm);
       
-      Area Crater = new Area(3, 1, 100, 1, null, 6, "Water Fountain", "You find the remains of a ship on the beach.");
+      Area Crater = new Area(3, 1, 100, 1, null, 3, "Crater", "You find the remains of a ship on the beach.");
       addNewArea(Crater);
       
-      Area Staircase = new Area(3, 2, 100, 1, null, 6, "Arby's", "You find the remains of a ship on the beach.");
+      Area Staircase = new Area(3, 2, 100, 1, null, 3, "Stone Staircase", "You find the remains of a ship on the beach.");
       addNewArea(Staircase);
       
-      Area Watchtower = new Area(3, 3, 100, 1, null, 6, "Watchtower", "You find the remains of a ship on the beach.");
+      Area Watchtower = new Area(3, 3, 100, 1, null, 3, "Watchtower", "You find the remains of a ship on the beach.");
       addNewArea(Watchtower);
       
-      Area Dam = new Area(3, 4, 100, 1, null, 6, "River Dam", "You find the remains of a ship on the beach.");
+      Area Dam = new Area(3, 4, 100, 1, null, 3, "River Dam", "You find the remains of a ship on the beach.");
       addNewArea(Dam);
 
 //row 5
-      Area Cave = new Area(4, 0, 100, 1, null, 6, "Cave", "You find the remains of a ship on the beach.");
+      Area Cave = new Area(4, 0, 100, 1, null, 3, "Cave", "You find the remains of a ship on the beach.");
       addNewArea(Cave);
       
-      Area Wall = new Area(4, 1, 100, 1, null, 6, "Castle Wall", "You find the remains of a ship on the beach.");
+      Area Wall = new Area(4, 1, 100, 1, null, 3, "Castle Wall", "You find the remains of a ship on the beach.");
       addNewArea(Wall);
       
-      Area Entrance = new Area(4, 2, 100, 1, null, 6, "Castle Entrance", "You find the remains of a ship on the beach.");
+      Area Entrance = new Area(4, 2, 100, 1, null, 3, "Castle Entrance", "You find the remains of a ship on the beach.");
       addNewArea(Entrance);
       
-      Area Village = new Area(4, 3, 100, 1, null, 6, "Village", "You find the remains of a ship on the beach.");
+      Area Village = new Area(4, 3, 100, 1, null, 3, "Village", "You find the remains of a ship on the beach.");
       addNewArea(Village);
       
-      Area Resivior = new Area(4, 4, 100, 1, null, 6, "Resivior Bank", "You find the remains of a ship on the beach.");
+      Area Resivior = new Area(4, 4, 100, 1, null, 3, "Resivior Bank", "You find the remains of a ship on the beach.");
       addNewArea(Resivior);
 
    }
