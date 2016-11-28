@@ -5,6 +5,7 @@
  */
 package pkginterface;
 
+import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -22,6 +23,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 import javafx.geometry.Insets;
+import javafx.util.Duration;
 
 /**
  *
@@ -58,8 +60,14 @@ public class Interface extends Application {
         Image adamsmall = new Image("adamsmall.png");
         Image health = new Image("health.png");
         Image direction = new Image("direction.png");
+        Image livsmall = new Image("livsmall.png");
+        Image copsmall = new Image("copsmall.png");
+        Image liv = new Image("liv.png");
         
         gc.drawImage(direction, 0, 360);
+        gc.drawImage(dialogue, 240, 360);
+        gc.fillText("You have entered the Forest.", 245, 380);
+        gc.strokeText("You have entered the Forest.", 245, 380);
         
         VBox combatMenu = new VBox(4);
         combatMenu.setPadding(new Insets(355, 0, 0, 575));
@@ -91,19 +99,48 @@ public class Interface extends Application {
         northBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                gc.clearRect(0,0,720,480);
-                gc.drawImage(dialogue, 160, 350);
-                gc.drawImage(adam, 5, 280);
-                gc.drawImage(cmenu, 570, 350);
-                gc.drawImage(harambesmall, 640, 0);
-                gc.drawImage(adamsmall, 5, 0);
-                gc.drawImage(health, 80, 5);
-                gc.drawImage(health, 390, 5);
-                gc.fillText("Harambe is glaring at you threateningly.", 170, 375);
-                gc.strokeText("Harambe is glaring at you threateningly.", 170, 375);
+                PauseTransition pause1 = new PauseTransition(Duration.seconds(0));
+                pause1.setOnFinished(pauseEvent -> {
+                    scene.getStylesheets().addAll(this.getClass().getResource("style2.css").toExternalForm());
+                    gc.clearRect(0, 0, 720, 480);
+                    gc.drawImage(direction, 0, 360);
+                    gc.drawImage(dialogue, 240, 360);
+                    gc.fillText("Encounter!", 20, 400);
+                    gc.strokeText("Encounter!", 45, 425);
+                    gc.fillText("You have entered the desert.", 245, 380);
+                    gc.strokeText("You have entered the desrt.", 245, 380);
+                });
+                pause1.play();
                 
-                combatMenu.setVisible(true);
-                combatMenu.setManaged(true);
+                PauseTransition pause2 = new PauseTransition(Duration.seconds(2));
+                pause2.setOnFinished(pauseEvent -> {
+                    gc.clearRect(0, 0, 720, 480);
+                    gc.drawImage(direction, 0, 360);
+                    gc.drawImage(dialogue, 240, 360);
+                    gc.fillText("Encounter!", 20, 400);
+                    gc.strokeText("Encounter!", 45, 425);
+                    gc.fillText("A cop has caught you!", 245, 380);
+                    gc.strokeText("A cop has caught you!", 245, 380);
+                });
+                pause2.play();
+                
+                PauseTransition pause3 = new PauseTransition(Duration.seconds(5));
+                pause3.setOnFinished(pauseEvent -> {
+                    gc.clearRect(0,0,720,480);
+                    combatMenu.setVisible(true);
+                    combatMenu.setManaged(true);
+                    gc.drawImage(dialogue, 160, 350);
+                    gc.drawImage(adam, 5, 280);
+                    gc.drawImage(cmenu, 570, 350);
+                    gc.drawImage(copsmall, 640, 0);
+                    gc.drawImage(adamsmall, 5, -15);
+                    gc.drawImage(health, 80, 5);
+                    gc.drawImage(health, 390, 5);
+                    gc.fillText("The cop is attempting to arrest you.", 170, 375);
+                    gc.strokeText("The cop is attempting to arrest you.", 170, 375);
+                });
+                pause3.play();
+            
                 hbWestEast.setVisible(false);
                 hbWestEast.setManaged(false);
                 vbNorthSouth.setVisible(false);
@@ -126,7 +163,11 @@ public class Interface extends Application {
         eastBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Not yet implemented.");
+                gc.clearRect(0, 0, 720, 480);
+                gc.drawImage(direction, 0, 360);
+                gc.drawImage(dialogue, 240, 360);
+                gc.fillText("The path is blocked.", 245, 380);
+                gc.strokeText("The path is blocked.", 245, 380);
             }
         });
         
@@ -135,7 +176,11 @@ public class Interface extends Application {
         southBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Not yet implemented.");
+                gc.clearRect(0, 0, 720, 480);
+                gc.drawImage(direction, 0, 360);
+                gc.drawImage(dialogue, 240, 360);
+                gc.fillText("The path is blocked.", 245, 380);
+                gc.strokeText("The path is blocked.", 245, 380);
             }
         });
 
@@ -144,7 +189,11 @@ public class Interface extends Application {
         westBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Not yet implemented.");
+                gc.clearRect(0, 0, 720, 480);
+                gc.drawImage(direction, 0, 360);
+                gc.drawImage(dialogue, 240, 360);
+                gc.fillText("The path is blocked.", 245, 380);
+                gc.strokeText("The path is blocked.", 245, 380);
             }
         });
         
@@ -156,12 +205,40 @@ public class Interface extends Application {
                 gc.drawImage(dialogue, 160, 350);
                 gc.drawImage(adam, 5, 280);
                 gc.drawImage(cmenu, 570, 350);
-                gc.drawImage(harambesmall, 640, 0);
-                gc.drawImage(adamsmall, 5, 0);
+                gc.drawImage(copsmall, 640, 0);
+                gc.drawImage(adamsmall, 5, -15);
                 gc.drawImage(health, 80, 5);
                 gc.drawImage(health, 390, 5);
-                gc.fillText("You snipe Harambe for 1 damage.", 170, 375);
-                gc.strokeText("You snipe Harambe for 1 damage.", 170, 375);
+                gc.fillText("You punch the cop for 7 damage.", 170, 375);
+                gc.strokeText("You punch the cop for 7 damage.", 170, 375);
+                gc.clearRect(398, 16, 234, 21);
+                
+                PauseTransition pause4 = new PauseTransition(Duration.seconds(1));
+                pause4.setOnFinished(pauseEvent -> {
+                    gc.clearRect(0,0,720,480);
+                    gc.drawImage(direction, 0, 360);
+                    gc.drawImage(dialogue, 240, 360);
+                    gc.fillText("The cop is unconscious, you have escaped!", 245, 380);
+                    gc.strokeText("The cop is unconscious, you have escaped!", 245, 380);
+                    gc.fillText("Choose a direction to run.", 245, 400);
+                    gc.strokeText("Choose a direction to run.", 245, 400);
+                    gc.clearRect(398, 16, 234, 21);
+                    combatMenu.setVisible(false);
+                    combatMenu.setManaged(false);
+                    hbWestEast.setVisible(true);
+                    hbWestEast.setManaged(true);
+                    vbNorthSouth.setVisible(true);
+                    vbNorthSouth.setManaged(true);
+                    northBtn.setVisible(true);
+                    northBtn.setManaged(true);
+                    eastBtn.setVisible(true);
+                    eastBtn.setManaged(true);
+                    southBtn.setVisible(true);
+                    southBtn.setManaged(true);
+                    westBtn.setVisible(true);
+                    westBtn.setManaged(true);
+                });
+                pause4.play();
             }
         });
         
@@ -173,8 +250,8 @@ public class Interface extends Application {
                 gc.drawImage(dialogue, 160, 350);
                 gc.drawImage(adam, 5, 280);
                 gc.drawImage(cmenu, 570, 350);
-                gc.drawImage(harambesmall, 640, 0);
-                gc.drawImage(adamsmall, 5, 0);
+                gc.drawImage(copsmall, 640, 0);
+                gc.drawImage(adamsmall, 5, -15);
                 gc.drawImage(health, 80, 5);
                 gc.drawImage(health, 390, 5);
                 gc.fillText("You take a defensive stance.", 170, 375);
@@ -190,8 +267,8 @@ public class Interface extends Application {
                 gc.drawImage(dialogue, 160, 350);
                 gc.drawImage(adam, 5, 280);
                 gc.drawImage(cmenu, 570, 350);
-                gc.drawImage(harambesmall, 640, 0);
-                gc.drawImage(adamsmall, 5, 0);
+                gc.drawImage(copsmall, 640, 0);
+                gc.drawImage(adamsmall, 5, -15);
                 gc.drawImage(health, 80, 5);
                 gc.drawImage(health, 390, 5);
                 gc.fillText("You heal for 4 HP.", 170, 375);
@@ -207,14 +284,14 @@ public class Interface extends Application {
                 gc.drawImage(dialogue, 160, 350);
                 gc.drawImage(adam, 5, 280);
                 gc.drawImage(cmenu, 570, 350);
-                gc.drawImage(harambesmall, 640, 0);
-                gc.drawImage(adamsmall, 5, 0);
+                gc.drawImage(copsmall, 640, 0);
+                gc.drawImage(adamsmall, 5, -15);
                 gc.drawImage(health, 80, 5);
                 gc.drawImage(health, 390, 5);
                 gc.fillText("You try to run.", 170, 375);
                 gc.strokeText("You try to run.", 170, 375);
-                gc.fillText("Harambe easily catches you.", 170, 400);
-                gc.strokeText("Harambe easily catches you.", 170, 400);
+                gc.fillText("The cop easily catches you.", 170, 400);
+                gc.strokeText("The cop easily catches you.", 170, 400);
             }
         });
         
