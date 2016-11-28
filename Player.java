@@ -8,12 +8,9 @@ public class Player
    ArrayList<Weapon> weapons = new ArrayList<Weapon>();
    ArrayList<Armor> armors = new ArrayList<Armor>();
    
-   Weapon weapon1;
-   Weapon weapon2;
-   Weapon weapon3;
-   Weapon weapon4;
-   Armor armor1;
-   Armor armor2;
+   Weapon[] weaponall = new Weapon[4];
+   
+   Armor[] armorall = new Armor[2];
    
    //stats
    private double att = 1.0;
@@ -129,7 +126,7 @@ public class Player
          lvl++;
          point++;
          nextLvlExp += 100+((lvl-1)*(25));
-         System.out.println("You leveled up! You are now level " + lvl);
+         System.out.println("You leveled up! You are now level " + lvl + "You also gained a skill point!");
       }
    }
    public String getStats()
@@ -142,38 +139,22 @@ public class Player
    public double attack(int slot)
    {
       double value = 0;
-      switch(slot)
-      {
-         case 1:
-            value = weapon1.getDamage() * att;
-            break;
-         case 2:
-            value = weapon2.getDamage() * att;
-            break;
-         case 3:
-            value = weapon3.getDamage() * att;
-            break;
-         case 4:
-            value = weapon4.getDamage() * att;
-            break;
-         default:
-            System.out.println("error in player - attack()");
-            break;
-      }
-      
+      if (slot > 0 && slot < 5)
+         {  
+            if(weaponall[slot -1] != null)
+               { 
+                  value = weaponall[slot -1].getDamage() * att;
+               }
+            
+         }
+           
       return value;
    }
-   /*
-   public double defend()
-   {
-      return (armor1.getArmor() + armor2.getArmor()) * def;
-   }
-   */
    
    public void hurt(double s)
    {
       double difference = temphp;
-      double armorhp = temphp * (def + armor1.getArmor() + armor1.getArmor());
+      double armorhp = temphp * (def + armorall[0].getArmor() + armorall[1].getArmor());
       temphp = ((armorhp - s)/ armorhp) * temphp;
       difference = difference - temphp;
       System.out.println("Enemy dealt " + (int)difference + " damage\nYour Health: " + (int)temphp + "/" + (int)maxhp);
@@ -189,137 +170,66 @@ public class Player
       armors.add(b);
    }
    
-   public void setWeapon1(int weaponIndex)
+   public void setWeapon(int weaponToUnequip, int weaponToEquip)
    {
-      if(weapon1 == null && weapons.size() > weaponIndex)
+      if(weaponall[weaponToUnequip] == null && weapons.size() > weaponToEquip)
       {
-         weapon1 = weapons.get(weaponIndex);
-         weapons.remove(weaponIndex);
+         weaponall[weaponToUnequip] = weapons.get(weaponToEquip);
+         weapons.remove(weaponToEquip);
       }
-      else if(weapons.size() >= weaponIndex)
+      else if(weapons.size() >= weaponToEquip)
       {
-         weapons.add(weapon1);
-         weapon1 = weapons.get(weaponIndex);
-         weapons.remove(weaponIndex);
+         weapons.add(weaponall[weaponToUnequip]);
+         weaponall[weaponToUnequip] = weapons.get(weaponToEquip);
+         weapons.remove(weaponToEquip);
       }
       else
       {
-         System.out.println("Error, cannot set weapon 1");
+         System.out.println("Error, cannot set weapon ");
       }
    }
    
-   public void setWeapon2(int weaponIndex)
+     
+   public void setArmor(int armorToUnequip, int armorToEqup)
    {
-      if(weapon2 == null && weapons.size() > weaponIndex)
+      if(armorall[armorToUnequip] == null && armors.size() >= armorToEqup)
       {
-         weapon2 = weapons.get(weaponIndex);
-         weapons.remove(weaponIndex);
+         armorall[armorToUnequip] = armors.get(armorToEqup);
+         armors.remove(armorToEqup);
       }
-      else if(weapons.size() >= weaponIndex)
+      else if(armors.size() >= armorToEqup)
       {
-         weapons.add(weapon2);
-         weapon2 = weapons.get(weaponIndex);
-         weapons.remove(weaponIndex);
+         armors.add(armorall[armorToUnequip]);
+         armorall[armorToUnequip] = armors.get(armorToEqup);
+         armors.remove(armorToEqup);
       }
       else
       {
-         System.out.println("Error, cannot set weapon 2");
-      }
-   }
-   
-   public void setWeapon3(int weaponIndex)
-   {
-      if(weapon3 == null && weapons.size() > weaponIndex)
-      {
-         weapon3 = weapons.get(weaponIndex);
-         weapons.remove(weaponIndex);
-      }
-      else if(weapons.size() >= weaponIndex)
-      {
-         weapons.add(weapon3);
-         weapon3 = weapons.get(weaponIndex);
-         weapons.remove(weaponIndex);
-      }
-      else
-      {
-         System.out.println("Error, cannot set weapon 3");
-      }
-   }
-   
-   public void setWeapon4(int weaponIndex)
-   {
-      if(weapon4 == null && weapons.size() > weaponIndex)
-      {
-         weapon4 = weapons.get(weaponIndex);
-         weapons.remove(weaponIndex);
-      }
-      else if(weapons.size() >= weaponIndex)
-      {
-         weapons.add(weapon4);
-         weapon4 = weapons.get(weaponIndex);
-         weapons.remove(weaponIndex);
-      }
-      else
-      {
-         System.out.println("Error, cannot set weapon 4");
-      }
-   }
-   
-   public void setArmor1(int armorIndex)
-   {
-      if(armor1 == null && armors.size() >= armorIndex)
-      {
-         armor1 = armors.get(armorIndex);
-         armors.remove(armorIndex);
-      }
-      else if(armors.size() >= armorIndex)
-      {
-         armors.add(armor1);
-         armor1 = armors.get(armorIndex);
-         armors.remove(armorIndex);
-      }
-      else
-      {
-         System.out.println("Error, cannot set armor 1");
-      }
-   }
-   
-   public void setArmor2(int armorIndex)
-   {
-      if(armor2 == null && armors.size() >= armorIndex)
-      {
-         armor2 = armors.get(armorIndex);
-         armors.remove(armorIndex);
-      }
-      else if(armors.size() >= armorIndex)
-      {
-         armors.add(armor2);
-         armor2 = armors.get(armorIndex);
-         armors.remove(armorIndex);
-      }
-      else
-      {
-         System.out.println("Error, cannot set armor 2");
+         System.out.println("Error, cannot set armor ");
       }
    }
    
    public String getWeaponsEquipped()
    {
-      String one = "1-" + weapon1.getItemName() + " Damage: " + (int)weapon1.getDamage();
-      String two = "";
-      if(weapon2 != null)
+      String one = "";
+      if(weaponall[0] != null)
       {
-         two = "\n2-" + weapon2.getItemName() + " Damage: " + (int)weapon2.getDamage();
+         one = "1-" + weaponall[0].getItemName() + " Damage: " + (int)weaponall[0].getDamage();
+      }
+      String two = "";
+      if(weaponall[1] != null)
+      {
+         two = "\n2-" + weaponall[1].getItemName() + " Damage: " + (int)weaponall[1].getDamage();
       }
       String three = "";
-      if(weapon3 != null)
+      if(weaponall[2] != null)
       {
-         three = "\n3-" + weapon3.getItemName() + " Damage: " + (int)weapon3.getDamage();
+         three = "\n3-" + weaponall[2].getItemName() + " Damage: " + (int)weaponall[2].getDamage();
       }
       String four = "";
-      if(weapon4 != null)
+      if(weaponall[3] != null)
       {
-         four = "\n4-" + weapon4.getItemName() + " Damage: " + (int)weapon4.getDamage();
+         four = "\n4-" + weaponall[3].getItemName() + " Damage: " + (int)weaponall[3].getDamage();
       }
       return one + two + three + four;
    }
@@ -335,5 +245,30 @@ public class Player
       return list;
    }
    
+   public String getArmorInventory()
+   {
+      String list = "";
+      int loop = armors.size();
+      for(int i = 0; i < loop; i++)
+      {
+         list += "" + (i + 1) + "-- " + armors.get(i).armorInfo() + "\n";
+      }
+      return list;
+   }
    
+   public String getArmorEquipped()
+   {
+      String one = "";
+      if(armorall[1] != null)
+      {
+         one = "1-" + armorall[0].getItemName() + " Armor: " + (double)armorall[0].getArmor();
+      }
+      String two = "";
+      if(armorall[1] != null)
+      {
+         two = "\n2-" + armorall[1].getItemName() + " Armor: " + (double)armorall[1].getArmor();
+      }
+      return one + two;
+   }
+
 }  

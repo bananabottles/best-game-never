@@ -32,24 +32,39 @@ public class Armor extends Gear
       }
       
       String wName = "";
-      int nameNum = rand.nextInt(4);
+      int nameNum = rand.nextInt(9);
       
       switch(nameNum)
       {
          case 0:
-            wName = "Hide";
+            wName = "Cow Hide";
             break;
          case 1:
             wName = "Ballistic Weave";
             break;
          case 2:
-            wName = "Light";
+            wName = "Light-weight nylon";
             break;
          case 3:
             wName = "Flak";
             break;
+         case 4:
+            wName = "Carbon Threaded";
+            break;
+         case 5:
+            wName = "Ceramic Platting";
+            break;
+         case 6:
+            wName = "Kevlar Jacket";
+            break;
+         case 7:
+            wName = "Tin Foil Patched Suit";
+            break;
+         case 8:
+            wName = "Track Suit with Sketchers Z-Strap Light Up Edition";
+            break;                      
          default:
-            wName = "error";
+            wName = "error in armor";
             break;
       }
       
@@ -97,7 +112,7 @@ public class Armor extends Gear
       return armor;
    }
    
-   public String toString()
+   public String armorInfo()
    {
       return "Armor\nName: " + super.getItemName() + "\nArmor: " + armor + "\nWeight: " + super.getWeight() + "\nRarity: " + super.getRarity() + "\nSlot: " + slot + "\n";
    }

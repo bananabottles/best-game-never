@@ -1,6 +1,5 @@
 
 
-
 public class Map
 {
    private String mapName = "";
@@ -155,17 +154,16 @@ public class Map
       {
          if(step >= coordinate[currentArea.getRow() + 1][currentArea.getColumn()].getOpenStep())
          {
-            options += "North: " + coordinate[currentArea.getRow() + 1][currentArea.getColumn()].getName() + "\n";
+            options += "1 - North: " + coordinate[currentArea.getRow() + 1][currentArea.getColumn()].getName() + "\n";
          }
          else
          {
-            options += "North: " + coordinate[currentArea.getRow() + 1][currentArea.getColumn()].getName() + " (locked)\n";
+            options += "1 - North: " + coordinate[currentArea.getRow() + 1][currentArea.getColumn()].getName() + " (locked)\n";
          }
-         System.out.println("" + step + " " + coordinate[currentArea.getRow() + 1][currentArea.getColumn()].getOpenStep());
       }
       else
       {
-         options += "North: This path is blocked\n";
+         options += "1 - North: This path is blocked\n";
       }
       
       
@@ -173,17 +171,16 @@ public class Map
       {
          if(step >= coordinate[currentArea.getRow() - 1][currentArea.getColumn()].getOpenStep())
          {
-            options += "South: " + coordinate[currentArea.getRow() - 1][currentArea.getColumn()].getName() + "\n";
+            options += "2 - South: " + coordinate[currentArea.getRow() - 1][currentArea.getColumn()].getName() + "\n";
          }
          else
          {
-            options += "South: " + coordinate[currentArea.getRow() - 1][currentArea.getColumn()].getName() + " (locked)\n";
+            options += "2 - South: " + coordinate[currentArea.getRow() - 1][currentArea.getColumn()].getName() + " (locked)\n";
          }
-         System.out.println("" + step + " " + coordinate[currentArea.getRow() - 1][currentArea.getColumn()].getOpenStep());
       }
       else
       {
-         options += "South: This path is blocked\n";
+         options += "2 - South: This path is blocked\n";
       }
       
       
@@ -191,17 +188,16 @@ public class Map
       {
          if(step >= coordinate[currentArea.getRow()][currentArea.getColumn() + 1].getOpenStep())
          {
-            options += "East: " + coordinate[currentArea.getRow()][currentArea.getColumn() + 1].getName() + "\n";
+            options += "3 - East: " + coordinate[currentArea.getRow()][currentArea.getColumn() + 1].getName() + "\n";
          }
          else
          {
-            options += "East: " + coordinate[currentArea.getRow()][currentArea.getColumn() + 1].getName() + " (locked)\n";
+            options += "3 - East: " + coordinate[currentArea.getRow()][currentArea.getColumn() + 1].getName() + " (locked)\n";
          }
-         System.out.println("" + step + " " + coordinate[currentArea.getColumn()][currentArea.getColumn() + 1].getOpenStep() + " " + currentArea.getRow() + " " + currentArea.getColumn());
       }
       else
       {
-         options += "East: This path is blocked\n";
+         options += "3 - East: This path is blocked\n";
       }
       
       
@@ -209,17 +205,16 @@ public class Map
       {
          if(step >= coordinate[currentArea.getRow()][currentArea.getColumn() - 1].getOpenStep())
          {
-            options += "West: " + coordinate[currentArea.getRow()][currentArea.getColumn() - 1].getName() + "\n";
+            options += "4 - West: " + coordinate[currentArea.getRow()][currentArea.getColumn() - 1].getName() + "\n";
          }
          else
          {
-            options += "West: " + coordinate[currentArea.getRow()][currentArea.getColumn() - 1].getName() + " (locked)\n";
+            options += "4 - West: " + coordinate[currentArea.getRow()][currentArea.getColumn() - 1].getName() + " (locked)\n";
          }
-         System.out.println("" + step + " " + coordinate[currentArea.getColumn()][currentArea.getColumn() - 1].getOpenStep());
       }
       else
       {
-         options += "West: This path is blocked\n";
+         options += "4 - West: This path is blocked\n";
       }
       
       return options;
@@ -327,4 +322,3 @@ public class Map
    
    
 }
-

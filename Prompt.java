@@ -114,34 +114,32 @@ public class Prompt
    */
    private void inventory(Player p)
    {
-      System.out.println("\nInventory\n" + "Weapons\n" + p.getWeaponInventory());
+      System.out.println("\nInventory\n" + "Weapons\n" + p.getWeaponInventory() + "Armor\n" + p.getArmorInventory());
       System.out.println("Would you like to equiped a new weapon? 1.(Y)    2.(N)");
       int yana = keyboard.nextInt();
       
       switch(yana)
       {
       case(1):
-         System.out.println("Which weapon would you like to replace?\n" + p.getWeaponsEquipped());
+         System.out.println("Which weapon would you like to replace?\n" + p.getWeaponsEquipped() + "\n5 - Return");
          int which = keyboard.nextInt();
-         System.out.println("Which weapon would you like to use?\n" + p.getWeaponInventory());
+         System.out.println("Which weapon would you like to use?\n" + p.getWeaponInventory() + "\nAny other # - Return");
          int whichwep = keyboard.nextInt();
          switch(which)
          {
             case(1):
-               p1.setWeapon1(whichwep - 1);
-               System.out.println("Current set:\n" + p.getWeaponsEquipped() + "\n");
+               p1.setWeapon(which - 1, whichwep -1);
                break; 
             case(2):
-               p1.setWeapon2(whichwep - 1);
-               System.out.println("Current set:\n" + p.getWeaponsEquipped() + "\n");
+               p1.setWeapon(which - 1, whichwep -1);
                break;
             case(3):
-               p1.setWeapon3(whichwep - 1);
-               System.out.println("Current set:\n" + p.getWeaponsEquipped() + "\n");
+               p1.setWeapon(which - 1, whichwep -1);
                break;
             case(4):
-               p1.setWeapon4(whichwep - 1);
-               System.out.println("Current set:\n" + p.getWeaponsEquipped() + "\n");         
+               p1.setWeapon(which - 1, whichwep -1);
+               break;
+            default:
                break;
          }
          break;
