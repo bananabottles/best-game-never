@@ -1,4 +1,5 @@
 # best-game-never
-Daniel
+Daniel Pearish
 ｱﾀﾞﾑｶﾙﾐｶﾙ
-R-r-roland-sama
+Roland Stark
+KENNY HERRHOLZ
