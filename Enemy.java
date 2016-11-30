@@ -84,7 +84,6 @@ public class Enemy
             System.out.println("Error in Enemy constructor w/ difficulty" + enemyType);
             break;
       }
-      //exp *= 2;
    }
    
    public void setName(String name)
@@ -171,7 +170,7 @@ public class Enemy
       showHealth();
       if(temphp < 1) //enemy dies when health reaches zero 
       {
-         System.out.println("Enemy is dead");
+         System.out.println("The enemy has been defeated.");
          die = true;
       }      
       
