@@ -53,6 +53,7 @@ public class Combat
       }
       else
       {
+         System.out.println("You decided to run.");
          System.out.println("An enemy will be waiting for your return");
          a.setReturnFight(true);
          
