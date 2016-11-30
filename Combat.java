@@ -10,7 +10,8 @@ public class Combat
    private Player p1;
    private Enemy e1;
    private Random rand = new Random();
-   private Weapon pickUp = null;
+   private Weapon pickUpW = null;
+   private Armor pickUpA = null;
    
    public Combat()
    {
@@ -39,12 +40,18 @@ public class Combat
          System.out.print("" + p1.getExp() + "/" + p1.getExpToLevel() + "\n");
          
          int val = rand.nextInt(100);
-         if (val <= 100)
+         if (val <= 40)
          {
          //Drop Weapon 
-         pickUp = new Weapon(p1.getLvl(), e1.getEnemyRank());
-         p1.pickUpWeapon(pickUp);
-         System.out.println("You just got a " + pickUp.details());
+         pickUpW = new Weapon(p1.getLvl(), e1.getEnemyRank());
+         p1.pickUpWeapon(pickUpW);
+         System.out.println("You just got a " + pickUpW.details());
+         }
+         else if (val <= 50)
+         {
+            pickUpA = new Armor(p1.getLvl(), e1.getEnemyRank());
+            p1.pickUpArmor(pickUpA);
+            System.out.println("You just got a " + pickUpA.armorInfo());
          }
         
          
@@ -93,9 +100,9 @@ public class Combat
          a.setDefeat(true);
          
          //Drop Weapon 
-         pickUp = a.getBossEnemy().getWeaponDrop();
-         p1.pickUpWeapon(pickUp);
-         System.out.println("You just got a " + pickUp.details());
+         pickUpW = a.getBossEnemy().getWeaponDrop();
+         p1.pickUpWeapon(pickUpW);
+         System.out.println("You just got a " + pickUpW.details());
          
         
          
