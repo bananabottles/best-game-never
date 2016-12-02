@@ -1,4 +1,4 @@
-Included an unfinished UML: http://puu.sh/sC9E7/02546474ea.png
+Included an unfinished UML: http://puu.sh/sCaq9/4c395d0e3b.png
 
 Added an instance variable gameStart to classes Player & Prompt. This prevents text from appearing with the introduction, but allows it to appear as normally afterwards
 
