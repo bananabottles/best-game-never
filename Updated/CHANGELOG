@@ -7,3 +7,5 @@ Replaced instances of text display "Exit" with "Return to menu" in the case wher
 Options menu "Quit Game" option changed to "Exit". Original "Exit" option removed.
 
 In the travel menu, option "5) Return to Menu" added. Self-explanatory purpose.
+
+Edited the display of the skills menu. The user is notified of the status update, the stats are displayed with linebreaks between each, and all misspellings were purged.
