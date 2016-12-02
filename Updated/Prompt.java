@@ -83,7 +83,7 @@ public class Prompt
       boolean exit = false;
       do
       {
-         System.out.println("Enter a number for an action:\n1 - Travel\n2 - Inventory\n3 - Skills " + p.getPoint() + "\n4 - Mission\n5 - Options");
+         System.out.println("Enter a number for an action:\n1 - Travel\n2 - Inventory\n3 - Skills [" + p.getPoint() + "]\n4 - Mission\n5 - Options");
          choice = keyboard.nextInt();
          switch(choice)
          {
@@ -94,7 +94,7 @@ public class Prompt
                inventory(p); //opens the inventory, allowing the player to view equipped gear, to view stored gear, and to equip and unequip gear
                break;
             case 3: 
-               vueSkills(p); //is going to show the player their stats most likely, and is where they get upgrade points to upgrade a stat when they level up
+               vueSkills(map, p); //is going to show the player their stats most likely, and is where they get upgrade points to upgrade a stat when they level up
                break;
             case 4: 
                mission(p);
@@ -208,15 +208,15 @@ public class Prompt
       }   
    }
    
-   public void vueSkills(Player p)
+   public void vueSkills(Map map, Player p)
    {
       //Displays your skills
-      System.out.println("Your stats are " + p.getStats());
+      System.out.println("Your stats are:\n" + p.getStats());
         
         //Skill point System
       if(p.getPoint() >= 1)
       {
-         System.out.println("You have " + p.getPoint() + " skill point(s) pick a stat to increase \n 1.Attack   2. Defense  3. Health   4. Agility");
+         System.out.println("You have " + p.getPoint() + " skill point(s). \nPick a stat to increase or return to menu. \n1.Attack   2. Defense   3. Health   4. Agility   5. Return to Menu");
          info = keyboard.nextInt();
          switch(info)
          {
@@ -236,6 +236,9 @@ public class Prompt
                p.addAgi(.1);
                p.usedPoint(1);
                break;      
+            case 5:
+               menu(map, p);
+               break;
          }   
       }//End of Skill point System
    }
