@@ -13,15 +13,7 @@ public class Area
    private int openStep = 0;
    private char subStep = 'a';
    private boolean defeated = false;
-   /*
-   0 - combat
-   1 - easy bias
-   2 - hard bias
-   3 - legendary bias
-   4 - easy only
-   5 - hard only
-   6 - legendary only
-   */
+   private boolean isHealingArea = false;
    
    public Area()
    {
@@ -93,6 +85,16 @@ public class Area
    public Boss getBossEnemy()
    {
       return bossEnemy;
+   }
+   
+   public void setHealingArea()
+   {
+      isHealingArea = true;
+   }
+   
+   public boolean getIsHealingArea()
+   {
+      return isHealingArea;
    }
    
    public boolean hasBoss()

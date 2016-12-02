@@ -2,9 +2,11 @@ import java.util.Scanner;
 
 public class Story
 {
+   
    Scanner input = new Scanner(System.in);
    private int currentStep = 1;
    int number;
+   
    
    public Story()
    {
@@ -24,7 +26,7 @@ public class Story
       }
        else if(a.getName().equals("Quartz Headquarters") && currentStep == 1)
       {
-         System.out.println("You see a women begging for someone to listen to her, however, you choose to check your post box for new leads.");
+         System.out.println("You see a woman begging for someone to listen to her, however, you choose to check your post box for new leads.");
          currentStep++;//Current step = 2
         
       }
@@ -36,7 +38,7 @@ public class Story
       }
       else if(a.getName().equals("Adam's Coffee Shop") && currentStep == 3)
       {
-         System.out.println("As you sit down waiting on your scone and coffee a young women approaches you.\nLiv: I understand that you are an information broker. I have information pretaining to a coup within our government.\nI am the Daughter of Izar the head of the Justice. I can offer you money if you can help aid me in learning more about\nwhen the coup plans to attack.");
+         System.out.println("As you sit down waiting on your scone and coffee a young woman approaches you.\nLiv: I understand that you are an information broker. I have information pretaining to a coup within our government.\nI am the Daughter of Izar the head of the Justice. I can offer you money if you can help aid me in learning more about\nwhen the coup plans to attack.");
          System.out.println("You should head toward Garden Plaza, its just north of your apartment.");
       }
       else if(a.getName().equals("Garden Plaza") && currentStep == 3)
@@ -76,6 +78,31 @@ public class Story
    public int getCurrentStep()
    {
       return currentStep;
+   }
+   
+   public String getCurrentMission()
+   {
+      String missionName = "";
+      switch(currentStep)
+      {
+         case 1:
+            missionName = "Go to headquarters";
+            break;
+         case 2:
+            missionName = "Review leads at home";
+            break;
+         case 3:
+            missionName = "Follow the lead";
+            break;
+         case 4:
+            missionName = "First Boss Fight";
+            break;
+         default:
+            System.out.println("Error in mission");
+            break;
+      }
+            
+      return missionName;
    }
    
    

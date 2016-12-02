@@ -3,7 +3,7 @@ import java.util.Random;
 public class Enemy
 {
 
-   private String eName = "Skeleton Archer";
+   private String eName = "Lunatic";
 
    private double att = 1.0;
    private double def = 1.0;
@@ -56,9 +56,9 @@ public class Enemy
       switch(enemyType)
       {
          case 1:  //change every combatD value in the area constructors in the Map class to a value between 1 and 5 so we can change this case back to 1
-            System.out.println("Case 1");
+            //System.out.println("Case 1");
             makeCommonEnemy(pl);
-            System.out.println("Made enemy");
+           // System.out.println("Made enemy");
             break;
          case 2:
             makeHardEnemy(pl);
@@ -84,6 +84,7 @@ public class Enemy
             System.out.println("Error in Enemy constructor w/ difficulty" + enemyType);
             break;
       }
+
    }
    
    public void setName(String name)
@@ -98,7 +99,7 @@ public class Enemy
       temphp = maxhp;
       agi = rand.nextDouble();//0.0 to 0.9
       exp = 40 +(5 * plevel); //Change to boost level
-      System.out.println("Common enemy made");
+      //System.out.println("Common enemy made");
       
    }
    
@@ -108,7 +109,7 @@ public class Enemy
       damage = 7 + (double)(plevel * (3 + rand.nextInt(4))) * 0.3;
       temphp = maxhp;
       exp = 80 + (5 * plevel);
-      System.out.println("Hard enemy made");
+      //System.out.println("Hard enemy made");
    }
    
    //returns the damage with the attack modifier

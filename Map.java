@@ -3,12 +3,22 @@
 public class Map
 {
    private String mapName = "";
-   private Area[][] coordinate = new Area[5][5];  //makes a 2d array of areas with coordinates
-   private Area currentArea = null;
-   private int newIndex = 0;  //increments for each area added to create coordinates for each area
-   private Area previousArea = null;
+   private Area[][] coordinate = new Area[5][5];   //makes a 2d array of areas with coordinates which functions as the map
+   private Area currentArea = null;                //which area you are in at any given moment
+   private int newIndex = 0;                       //increments for each area added to create coordinates for each area
+   private Area previousArea = null;               //previous area you were in, used when running from battle
    private Area nextArea = null;
+   private Area startingAreaMap1 = null;           //the starting area for map 1, used for the death function which sends you back to the starting area
+   private Area startingAreaMap2 = null;
+   private Area startingAreaMap3 = null;
+   //private Area startingAreaMap4 = null;
+   private int mapLoaded = 0;                      //stores the number of the map that has been loaded in each instance of Map, used for knowing which starting area to revert back to at death
    
+   /**
+   
+   @param name    name of map
+   @param load    used to pick which map to load, uses private method to load areas into the map
+   */   
    public Map(String name)
    {
       mapName = name;
@@ -21,26 +31,29 @@ public class Map
       {
          case 1:
             loadMap1();
+            mapLoaded = 1;
             break;
          case 2:
             loadMap2();
+            mapLoaded = 2;
             break;
          case 3:
             loadMap3();
+            mapLoaded = 3;
             break;
          default:
             System.out.println("Error: cannot load map " + load);
             break;
       }
    }
-   
+   //used to add a null area
    public void addNullArea()
    {
-      int j = newIndex % 5;
-      int i = newIndex / 5;
+      int j = newIndex % 5;   //sets the first dimension in the array
+      int i = newIndex / 5;   //sets the second dimension in the array
       if(i < 5 && j < 5)
       {
-         coordinate[i][j] = null;
+         coordinate[i][j] = null;   //sets the area location to null
       }
       else
       {
@@ -48,7 +61,7 @@ public class Map
       }
       newIndex++;
    }
-   
+   //adds areas, works the same as above method but passes a parameter
    private void addNewArea(Area a)
    {
       int j = newIndex % 5;  //indicates the column of each area
@@ -136,6 +149,25 @@ public class Map
       return move;
    }
    
+   public void moveBack()
+   {
+      switch(mapLoaded)
+      {
+         case 1:
+            currentArea = startingAreaMap1;
+            break;
+         case 2:
+            currentArea = startingAreaMap2;
+            break;
+         case 3:
+            currentArea = startingAreaMap3;
+            break;
+         default:
+            System.out.println("Error in dying");
+            break;
+      }
+   }
+   
    public void setCurrentArea(int r, int c)
    {
       currentArea = coordinate[r][c];
@@ -144,6 +176,11 @@ public class Map
    public Area getCurrentArea()
    {
       return currentArea;
+   }
+   
+   public Area getPreviousArea()
+   {
+      return previousArea;
    }
    
    public String getTravelOptions(int step)
@@ -231,6 +268,8 @@ public class Map
       addNewArea(Shore);  //adds a new area to coordinate[][] which is the array of areas that makes up the map
       
       Area Start = new Area(0, 1, 0, 1, null, 1, "John's apartment", "A apartment studio located in the center of the city.\nJohn works, eats, sleeps, and does everything else here.");
+      startingAreaMap1 = Start;  //sets this area as the designated starting area
+      Start.setHealingArea();
       addNewArea(Start);
       setCurrentArea(0,1);
       

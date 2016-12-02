@@ -19,11 +19,11 @@ public class Weapon extends Gear
       {
          case 'C':
             common = 0.9;
-            rare = 1.0;
+            rare = 100.0;
             break;
          case 'H':
             common = 0.4;
-            rare = 1.0;
+            rare = 100.0;
             break;
          case 'B':
             common = 0.0;
@@ -249,14 +249,14 @@ public class Weapon extends Gear
    private void makeRare(int pl)
    {
       super.setRarity("Rare");
-      damage = (rand.nextDouble() / 2.0) + 7.5 + ((double)pl * 0.7);
+      damage = (rand.nextDouble() / 2.0) + 8.0 + ((double)pl * 0.7);
    }
    
    
    private void makeLegend(int pl)
    {
       super.setRarity("Legend");
-      damage = (rand.nextDouble() / 2.0) + 8.5 + pl;
+      damage = (rand.nextDouble() / 2.0) + 10.5 + pl;
    }
    
    public double getDamage()
