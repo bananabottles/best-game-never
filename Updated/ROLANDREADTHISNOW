@@ -1,0 +1,9 @@
+Added an instance variable gameStart to classes Player & Prompt. This prevents text from appearing with the introduction, but allows it to appear as normally afterwards
+
+In inventory menu, options "View Weapon" and "View Armor" now notify the user if there is nothing to display.
+
+Replaced instances of text display "Exit" with "Return to menu" in the case where "Exit" did not exit the system.
+
+Options menu "Quit Game" option changed to "Exit". Original "Exit" option removed.
+
+In the travel menu, option "5) Return to Menu" added. Self-explanatory purpose.
