@@ -2,12 +2,12 @@ Included an unfinished UML class diagram: http://puu.sh/sCdKv/3efee6bc23.png
 
 Added an instance variable gameStart to classes Player & Prompt. This prevents text from appearing with the introduction, but allows it to appear as normally afterwards
 
-In inventory menu, options "View Weapon" and "View Armor" now notify the user if there is nothing to display.
+In the inventory submenu, options "View Weapon" and "View Armor" now notify the user if there is nothing to display.
 
 Replaced instances of text display "Exit" with "Return to menu" in the case where "Exit" did not exit the system.
 
 Options menu "Quit Game" option changed to "Exit". Original "Exit" option removed.
 
-In the travel menu, option "5) Return to Menu" added. Self-explanatory purpose.
+In the travel submenu, option "5) Return to Menu" added. Self-explanatory purpose.
 
 Edited the display of the skills menu. The user is notified of the status update, the stats are displayed with linebreaks between each, and all misspellings were purged.
