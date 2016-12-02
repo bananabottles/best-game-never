@@ -114,6 +114,6 @@ public class Armor extends Gear
    
    public String armorInfo()
    {
-      return "Armor\nName: " + super.getItemName() + "\nArmor: " + armor + "\nWeight: " + super.getWeight() + "\nRarity: " + super.getRarity() + "\nSlot: " + slot + "\n";
+      return "Name: " + super.getItemName() + " Armor: " + armor + " Weight: " + super.getWeight() + " Rarity: " + super.getRarity() + " Slot: " + slot;
    }
 }

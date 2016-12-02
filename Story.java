@@ -2,9 +2,11 @@ import java.util.Scanner;
 
 public class Story
 {
+   
    Scanner input = new Scanner(System.in);
    private int currentStep = 1;
    int number;
+   
    
    public Story()
    {
@@ -66,7 +68,7 @@ public class Story
        else if(a.getName().equals("Gypsy Medical Center") && currentStep == 5)
       {
          System.out.println("Liv: John you're badly hurt you should rest!");
-         System.out.println("John: hgnnnnn...bleh");
+         System.out.println("John: hgnnnnn...bleh\nEnd Scene John dies.\nYou've completed the Demo!");
       }
       
          
@@ -76,6 +78,11 @@ public class Story
    public int getCurrentStep()
    {
       return currentStep;
+   }
+   
+   public String getCurrentMission()
+   {
+      return "Kill Everything";
    }
    
    
