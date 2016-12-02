@@ -1,0 +1,3 @@
+Download the 12 java files titled Area.java, Armor.java, Boss.java, Combat.java, Enemy.java, Gear.java, Map.java, Play.java, Player.java, Prompt.java, Story.java, and Weapon.java, compile them, then run them in jGrasp or another java IDE.
+
+In addition, the abandonedGUI.java file can be run in JavaFX. It is, however, incomplete.
