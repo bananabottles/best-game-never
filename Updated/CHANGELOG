@@ -1,3 +1,5 @@
+Included an unfinished UML: http://puu.sh/sC7XH/e3fdcf3899.png
+
 Added an instance variable gameStart to classes Player & Prompt. This prevents text from appearing with the introduction, but allows it to appear as normally afterwards
 
 In inventory menu, options "View Weapon" and "View Armor" now notify the user if there is nothing to display.
