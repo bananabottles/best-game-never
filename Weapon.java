@@ -160,7 +160,7 @@ public class Weapon extends Gear
             super.setItemName("MOSIN NAGANT");
             break;
          case 41:
-            super.setItemName("PPSH");
+            super.setItemName("PPSh-41");
             break;
          case 42:
             super.setItemName("SCAR-H");

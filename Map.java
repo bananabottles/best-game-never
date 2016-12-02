@@ -149,6 +149,11 @@ public class Map
       return move;
    }
    
+   public void enterPreviousArea()
+   {
+      currentArea = previousArea;
+   }
+   
    public void moveBack()
    {
       switch(mapLoaded)

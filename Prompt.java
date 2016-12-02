@@ -52,7 +52,8 @@ public class Prompt
             a.setReturnFight(false);
             break;
          case 1: //you ran
-            run(map);
+            map.enterPreviousArea();
+            enterArea(map, map.getCurrentArea(), p1);
             break;
          case 2: //you died
             map.moveBack();
@@ -161,45 +162,6 @@ public class Prompt
                System.out.println("Weapon was equipped");
             }
          }
-         /*
-         System.out.println("Would you like to equiped a new weapon? 1.(Y)    2.(N)");
-         yana = keyboard.nextInt();
-         
-         switch(yana)
-         {
-            case(1):
-               System.out.println("Choose a slot for the new weapon?\n" + p.getWeaponsEquipped() + "\n5 - Return");
-               which = keyboard.nextInt();
-               if(which >= 1 && which <= 4)
-               {
-                  System.out.println("Which weapon would you like to use?\n" + p.getWeaponInventory() + "\n" + (p.getWeaponInventorySize() + 1) + "-Return");
-                  int whichwep = keyboard.nextInt();
-                  if(whichwep >= 1 && whichwep <= p.getWeaponInventorySize())
-                  {
-                     switch(which)
-                     {
-                        case(1):
-                           p1.setWeapon(which - 1, whichwep -1);
-                           break; 
-                        case(2):
-                           p1.setWeapon(which - 1, whichwep -1);
-                           break;
-                        case(3):
-                           p1.setWeapon(which - 1, whichwep -1);
-                           break;
-                        case(4):
-                           p1.setWeapon(which - 1, whichwep -1);
-                           break;
-                        default:
-                           break;
-                     }
-                  }
-               }
-               break;
-         
-            case(2):
-               break;
-         }   */
       }
       else if(category == 2)
       {
@@ -226,42 +188,6 @@ public class Prompt
          p.usePotion();
       
       }   
-         /**
-         switch(armorInv)
-         {
-            case(1):
-               System.out.println("Choose a slot for the new weapon?\n" + p.getArmorEquipped() + "\n5 - Return");
-               which = keyboard.nextInt();
-               if(which >= 1 && which <= 4)
-               {
-                  System.out.println("Which weapon would you like to use?\n" + p.getArmorInventory() + "\n" + (p.getArmorInventorySize() + 1) + "-Return");
-                  int whicharm = keyboard.nextInt();
-                  if(whicharm >= 1 && whicharm <= p.getArmorInventorySize())
-                  {
-                     switch(which)
-                     {
-                        case(1):
-                           p1.setWeapon(which - 1, whichwep -1);
-                           break; 
-                        case(2):
-                           p1.setWeapon(which - 1, whichwep -1);
-                           break;
-                        case(3):
-                           p1.setWeapon(which - 1, whichwep -1);
-                           break;
-                        case(4):
-                           p1.setWeapon(which - 1, whichwep -1);
-                           break;
-                        default:
-                           break;
-                     }
-                  }
-               }
-               break;
-         
-            case(2):
-               break;
-            */
    }
    
    public void vueSkills(Player p)
@@ -315,24 +241,26 @@ public class Prompt
             System.out.println("Loading Checkpoint");
             break;
          case 3:
-            System.out.println("1 - Travelling\n2 - Equipping and viewing weapons and armor\n3 - Using health potions\n4 - Using skill points\n5 - Exit");
-            int help = 1;
+            System.out.println("1 - Exploration\n2 - Equipping and viewing weapons and armor\n3 - Using health potions\n4 - Using skill points\n5 - Combat\n6 - Exit");
+            int help = keyboard.nextInt();
             switch(help)
             {
                case 1:
                   System.out.println("Most of the areas are locked at the start of the game, and the only way to unlock new areas to explore is to\nprogress through the story. There are multiple kinds of areas including safe areas, story areas, regular\ncombat areas, hard combat areas, and boss combat areas. Safe areas heal you back to full health. Story areas\ngenerally do not have combat except for boss areas.");
                   break;
                case 2:
-                  System.out.println("");
+                  System.out.println("To equip a weapon or armor, enter the inventory menu and select weapon or armor. You will be shown your inventory\nthat is not equipped. Enter the number that is next to the gear that you want to equip, and then you will be\nshown your current load out. Enter the number of the slot to equip the gear to, and if there was something\nalready equipped there, it will be put into your inventory and the new gear will take its place.");
                   break;
                case 3:
-                  System.out.println("");
+                  System.out.println("You collect health potions while fighting enemies. You can use them in the inventory menu by selecting to use a\npotion, or you can use them during combat while fighting tougher opponents.");
                   break;
                case 4:
-                  System.out.println("");
+                  System.out.println("Every time you level up, you gain a skill point. You can use these skill points to increase your stats such as\nattack power, defense power, maximum health, and agility.");
                   break;
                case 5:
-                  System.out.println("");
+                  System.out.println("The combat system consists of your attacking the enemy with your chosen weapon, and then the enemy attacking back.\nYour attacks will always hit the enemy, but the enemy may miss his attack depending on the enemy's agility stat\ncompared to yours. Every time you attack, it factors in your attack power and damage of the weapon, and your weapon's\ndurability decreases for every time you use it until it reaches zero and breaks. When the enemy attacks, it factors\nin the enemy's attack damage and your defense stat and armor rating. Between turns you may also use a health potion,\nor run. Running from battle is only possible agains common and hard enemies, not bosses. Running results in a %100\nchance to encounter an enemy in that specific area when you return to it. Defeating an enemy provides experience based\non your level and the enemy's difficulty rating. Defeating regular enemies has a chance to drop a weapon or armor, as\nwell as health potions. Defeating a boss will always drop a legendary weapon and three health potions.");
+                  break;
+               case 6:
                   break;
                default:
                   System.out.println("Error in help");
