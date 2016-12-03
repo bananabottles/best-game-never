@@ -195,7 +195,7 @@ public class Player
    {
       temphp = maxhp;
       if(gameStart == false)
-         System.out.println("Your health was completetly restored: " + temphp + "/" + maxhp);
+         System.out.println("Your health was completely restored: " + temphp + "/" + maxhp);
       gameStart = false;
    }
    
