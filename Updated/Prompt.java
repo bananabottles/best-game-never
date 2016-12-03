@@ -10,6 +10,7 @@ public class Prompt
    Player p1;
    Random rand = new Random();
    private Story story;
+   
    private boolean gameStart = true;           // this variable is used in method enterArea to determine whether text should be displayed
    
    public Prompt(Story s)
@@ -25,7 +26,6 @@ public class Prompt
    {
       int combatResult = 0;
       p1 = p;
-      
       if(gameStart == false)  // starts off as true, making sure the text isn't displayed at the very beginning of the game where only the intro should display
       {
          System.out.println("You just entered: " + a.getName());
@@ -88,13 +88,13 @@ public class Prompt
          switch(choice)
          {
             case 1:
-               travel(map, p);  //takes the player to the travel menu which shows them their options for travel
+               travel(map);  //takes the player to the travel menu which shows them their options for travel
                break;
             case 2:
                inventory(p); //opens the inventory, allowing the player to view equipped gear, to view stored gear, and to equip and unequip gear
                break;
             case 3: 
-               vueSkills(p, map); //is going to show the player their stats most likely, and is where they get upgrade points to upgrade a stat when they level up
+               vueSkills(p); //is going to show the player their stats most likely, and is where they get upgrade points to upgrade a stat when they level up
                break;
             case 4: 
                mission(p);
@@ -115,12 +115,12 @@ public class Prompt
    Gives the player the option to travel, to different areas in the map.
    uses the move functions in the class Map and the local function enterArea after an area is chosen
    */   
-   private void travel(Map map, Player p)
+   private void travel(Map map)
    {
       boolean move = false;
       
-      System.out.println(map.getTravelOptions(story.getCurrentStep()) + "5 - Return to Menu");
-      System.out.println("\nEnter 1, 2, 3, 4, or 5 to travel North, South, East, West, and Return to Menu Respectively:");
+      System.out.println(map.getTravelOptions(story.getCurrentStep()) + "\t\t\t\t5 - Exit");
+      System.out.println("\nEnter 1, 2, 3 or 4 to travel North, South, East, and West Respectively:");
       direction = keyboard.nextInt();
       switch(direction)
       {
@@ -137,7 +137,7 @@ public class Prompt
             move = map.moveWest(story.getCurrentStep());
             break;
          case 5:
-            menu(map, p);
+            break;
          default:
             System.out.println("Error, invalid input");
             break;
@@ -152,7 +152,7 @@ public class Prompt
    */
    private void inventory(Player p)
    {
-      System.out.println("\nInventory\n1 - View Weapons\n2 - View Armor\n3 - View Equipped\n4 - Use potion (You have " + p.getPotionNum() + ")\n5 - Return to Menu");// + p.getWeaponInventory() + "Armor\n" + p.getArmorInventory());
+      System.out.println("\nInventory\n1 - View Weapons\n2 - View Armor\n3 - View Equipped\n4 - Use potion (You have " + p.getPotionNum() + ")\n5 - Exit");// + p.getWeaponInventory() + "Armor\n" + p.getArmorInventory());
       int category = keyboard.nextInt();
       int armorInv = 1;
       int weaponInv = 1;
@@ -160,11 +160,11 @@ public class Prompt
       if(category == 1)
       {
          System.out.println("Weapons in bag: " + p.getWeaponInventory());
-         
-         if(p.getWeaponInventorySize() == 0)
+
+         if(p.getWeaponInventorySize() == 0)		
             System.out.println("You have no weapons in your bag.\n");
          
-         System.out.println("Enter # of weapon to equip, or " + (p.getWeaponInventorySize() + 1) + " to return to menu.");
+         System.out.println("Enter # of weapon to equip, or " + (p.getWeaponInventorySize() + 1) + " to exit.");
          weaponInv = keyboard.nextInt();
          if(weaponInv > 0 && weaponInv <= p.getWeaponInventorySize())
          {
@@ -181,10 +181,10 @@ public class Prompt
       {
          System.out.println("Armor in bag: " + p.getArmorInventory());
          
-         if(p.getArmorInventorySize() == 0)
+         if(p.getArmorInventorySize() == 0)		
             System.out.println("You have no armor in your bag.\n");
          
-         System.out.println("Enter # of armor to equip, or " + (p.getArmorInventorySize() + 1) + " to return to menu.");
+         System.out.println("Enter # of armor to equip, or " + (p.getArmorInventorySize() + 1) + " to exit.");
          armorInv = keyboard.nextInt();
          if(armorInv > 0 && armorInv <= p.getArmorInventorySize())
          {
@@ -208,7 +208,7 @@ public class Prompt
       }   
    }
    
-   public void vueSkills(Player p, Map map)
+   public void vueSkills(Player p)
    {
       //Displays your skills
       System.out.println("Your stats are:\n" + p.getStats());
@@ -216,7 +216,7 @@ public class Prompt
         //Skill point System
       if(p.getPoint() >= 1)
       {
-         System.out.println("You have " + p.getPoint() + " skill point(s). \nPick a stat to increase or return to menu. \n1.Attack   2. Defense   3. Health   4. Agility   5. Return to Menu");
+         System.out.println("You have " + p.getPoint() + " skill point(s).\nPick a stat to increase or return to menu.\n 1.Attack   2. Defense   3. Health   4. Agility   5. Return to Menu");
          info = keyboard.nextInt();
          switch(info)
          {
@@ -235,10 +235,11 @@ public class Prompt
             case 4:
                p.addAgi(.1);
                p.usedPoint(1);
-               break;      
-            case 5:
-               menu(map, p);
                break;
+            case 5:
+               break;
+            default:
+               System.out.println("Error in skill input");
          }   
       }//End of Skill point System
    }
@@ -250,13 +251,13 @@ public class Prompt
    
    private boolean options(Player p, Map map)
    {
-      System.out.println("1 - User Guide\n2 - Return to Menu \n3 - Exit");
+      System.out.println("1 - User Guide\n2 - Quit Game\n3 - Exit");
       choice = keyboard.nextInt();
       boolean quit = false;
       switch(choice)
       {
          case 1:
-            System.out.println("1 - Exploration\n2 - Equipping and viewing weapons and armor\n3 - Using health potions\n4 - Using skill points\n5 - Combat\n6 - Return to Menu");
+            System.out.println("1 - Exploration\n2 - Equipping and viewing weapons and armor\n3 - Using health potions\n4 - Using skill points\n5 - Combat\n6 - Exit");
             int help = keyboard.nextInt();
             switch(help)
             {
@@ -276,7 +277,6 @@ public class Prompt
                   System.out.println("The combat system consists of your attacking the enemy with your chosen weapon, and then the enemy attacking back.\nYour attacks will always hit the enemy, but the enemy may miss his attack depending on the enemy's agility stat\ncompared to yours. Every time you attack, it factors in your attack power and damage of the weapon, and your weapon's\ndurability decreases for every time you use it until it reaches zero and breaks. When the enemy attacks, it factors\nin the enemy's attack damage and your defense stat and armor rating. Between turns you may also use a health potion,\nor run. Running from battle is only possible agains common and hard enemies, not bosses. Running results in a %100\nchance to encounter an enemy in that specific area when you return to it. Defeating an enemy provides experience based\non your level and the enemy's difficulty rating. Defeating regular enemies has a chance to drop a weapon or armor, as\nwell as health potions. Defeating a boss will always drop a legendary weapon and three health potions.");
                   break;
                case 6:
-                  menu(map, p);
                   break;
                default:
                   System.out.println("Error in help");
@@ -284,21 +284,14 @@ public class Prompt
             }
             break;
          case 2:
-            menu(map, p);
+            quit = true;
             break;
          case 3:
-            quit = true;
-            System.exit(0);
             break;
          default:
             System.out.println("Bad input");
             break;
       }
       return quit;
-   }
-            
-   private void run(Map map)
-   {
-      enterArea(map, map.getPreviousArea(), p1);
    }
 }

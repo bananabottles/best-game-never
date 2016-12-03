@@ -160,7 +160,6 @@ public class Player
    {
       att += attack;
       System.out.println("\nYour attack is now: " + att + "\n");
-      //String stats = ("Level: " + lvl + " \nHP: " + temphp + "/" + maxhp + " \nAttack: " + att + " \nDefense: " + def + " \nAgility: " + agi);
    }
    
    public void addDef(double defense)
@@ -177,6 +176,7 @@ public class Player
    public void addMaxHp(double health)
    {
       maxhp += health;
+      temphp = maxhp;
       System.out.println("\nYour HP is now: " + temphp + "/" + maxhp + "\n");
    }
    
@@ -212,8 +212,8 @@ public class Player
    }
    public String getStats()
       {
-         String stats = ("Level: " + lvl + " \nHP: " + temphp + "/" + maxhp + " \nAttack: " + att + " \nDefense: " + def + " \nAgility: " + agi);
-           return (stats);
+         String stats = ("Level: " + lvl + "\nHP: " + temphp + "/" + maxhp + "\nAttack: " + att + "\nDefense: " + def + "\nAgility: " + agi);
+         return (stats);
       }
    
 
