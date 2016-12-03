@@ -94,7 +94,7 @@ public class Prompt
                inventory(p); //opens the inventory, allowing the player to view equipped gear, to view stored gear, and to equip and unequip gear
                break;
             case 3: 
-               vueSkills(map, p); //is going to show the player their stats most likely, and is where they get upgrade points to upgrade a stat when they level up
+               vueSkills(p, map); //is going to show the player their stats most likely, and is where they get upgrade points to upgrade a stat when they level up
                break;
             case 4: 
                mission(p);
@@ -208,7 +208,7 @@ public class Prompt
       }   
    }
    
-   public void vueSkills(Map map, Player p)
+   public void vueSkills(Player p, Map map)
    {
       //Displays your skills
       System.out.println("Your stats are:\n" + p.getStats());
@@ -245,24 +245,18 @@ public class Prompt
    
    private void mission(Player p)
    {
-      System.out.println("Mission " + story.getCurrentStep() + "\n" + story.getCurrentMission());
+      System.out.println("Mission " + story.getCurrentStep() + "\n" + story.getCurrentMission() + "\n");
    }
    
    private boolean options(Player p, Map map)
    {
-      System.out.println("1 - Save\n2 - Load Checkpoint\n3 - User Guide\n4 - Exit");
+      System.out.println("1 - User Guide\n2 - Return to Menu \n3 - Exit");
       choice = keyboard.nextInt();
       boolean quit = false;
       switch(choice)
       {
          case 1:
-            System.out.println("Game Saved");
-            break;
-         case 2:
-            System.out.println("Loading Checkpoint");
-            break;
-         case 3:
-            System.out.println("1 - Exploration\n2 - Equipping and viewing weapons and armor\n3 - Using health potions\n4 - Using skill points\n5 - Combat\n6 - Exit");
+            System.out.println("1 - Exploration\n2 - Equipping and viewing weapons and armor\n3 - Using health potions\n4 - Using skill points\n5 - Combat\n6 - Return to Menu");
             int help = keyboard.nextInt();
             switch(help)
             {
@@ -282,13 +276,17 @@ public class Prompt
                   System.out.println("The combat system consists of your attacking the enemy with your chosen weapon, and then the enemy attacking back.\nYour attacks will always hit the enemy, but the enemy may miss his attack depending on the enemy's agility stat\ncompared to yours. Every time you attack, it factors in your attack power and damage of the weapon, and your weapon's\ndurability decreases for every time you use it until it reaches zero and breaks. When the enemy attacks, it factors\nin the enemy's attack damage and your defense stat and armor rating. Between turns you may also use a health potion,\nor run. Running from battle is only possible agains common and hard enemies, not bosses. Running results in a %100\nchance to encounter an enemy in that specific area when you return to it. Defeating an enemy provides experience based\non your level and the enemy's difficulty rating. Defeating regular enemies has a chance to drop a weapon or armor, as\nwell as health potions. Defeating a boss will always drop a legendary weapon and three health potions.");
                   break;
                case 6:
+                  menu(map, p);
                   break;
                default:
                   System.out.println("Error in help");
                   break;
             }
             break;
-         case 4:
+         case 2:
+            menu(map, p);
+            break;
+         case 3:
             quit = true;
             System.exit(0);
             break;
