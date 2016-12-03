@@ -288,69 +288,70 @@ public class Map
       addNewArea(Outlet);
       
 //row two
-      Area Cabin = new Area(1, 0, 0, 1, null, 3, "Seating area", "This is where John likes to unwind and stare upon the city.");
+      Area Cabin = new Area(1, 0, 0, 1, null, 4, "Garden of the plaza", "In the garden secrets are made, and pacts are made.");
       addNewArea(Cabin);
       
       Area Forest = new Area(1, 1, 0, 1, null, 2, "Garden Plaza", "A high end plaza located in the higher district, where the busy and rich can relax.");
       addNewArea(Forest);
       
-      Area Gravel = new Area(1, 2, 0, 1, null, 4, "Coffee shop basement", "Underground Adam keeps all of his equipment for spying.");
+      Area Gravel = new Area(1, 2, 0, 1, null, 4, "Neon Lyfe Bar", "A bar where sketchy people unwind.");
       addNewArea(Gravel);
       
-      Area Thorns = new Area(1, 3, 100, 1, null, 3, "Abbey Alley", "Popular hang out shady people and getting cheap watches, and LOTS of mugging.");
+      Area Thorns = new Area(1, 3, 100, 1, null, 4, "VIP Section", "Popular hang out shady people and getting cheap watches, and LOTS of mugging.");
       addNewArea(Thorns);
       
-      Area Bank = new Area(1, 4, 0, 1, null, 4, "Head Quarters Bathroom", "Bathroom with a strange door.");
+      Area Bank = new Area(1, 4, 0, 1, null, 4, "Backroom Entrance", "Knock three times and better have your money.");
       addNewArea(Bank);
       
       
 //row three
-      Area Well = new Area(2, 0, 0, 1, null, 4, "Bar Lounge", "A place to meet exciting young people who drink and occasionally dance.");
+      Area Well = new Area(2, 0, 0, 1, null, 5, "8 Mile Road", "Where the toughest and most gifted chess players are raised.");
       addNewArea(Well);
       
-      Area Lake = new Area(2, 1, 0, 1, new Boss(), 4, "VIP section", "International Drug Smuggler Daily rates this spot 10/10 for quality seats and quality drinks.");
+      Area Lake = new Area(2, 1, 25, 1, null, 5, "Downtown", "One of the nicer parts of the city, home to famous port: Big Boat Little Boat Dockers.");
       addNewArea(Lake);
       
       Area Field = new Area(2, 2, 0, 1, null, 5, "Gypsy Medical Center", "Recover from your injuries.");
       addNewArea(Field);
       
-      Area Dark = new Area(2, 3, 25, 2, null, 5, "Dark Path", "Where the Gypsies gather their medical supplies.");
+      Area Dark = new Area(2, 3, 100, 2, null, 5, "Sickle Street", "Where the Gypsies gather and sell cheap souvenirs.");
       addNewArea(Dark);
       
-      Area Bridge = new Area(2, 4, 10, 1, null, 5, "Gambling pit", "Illegal gambling, smoke filled rooms, smell of wine, and cheap perfume.");
+      Area Bridge = new Area(2, 4, 17, 1, null, 4, "Gambling pit", "Illegal gambling, smoke filled rooms, smell of wine, and cheap perfume.");
       addNewArea(Bridge);
 
 //row 4      
-      Area Farm = new Area(3, 0, 100, 1, null, 6, "Burger Joint", "You find the remains of a ship on the beach.");
-      addNewArea(Farm);
+      Area Farm = new Area(3, 0, 0, 1, null, 6, "Road to redemption", "You find the remains of a ship on the beach.");
+      addNewArea(Farm);//Left with the choice to end game in blood bath or stealthy
       
-      Area Crater = new Area(3, 1, 100, 1, null, 6, "Water Fountain", "You find the remains of a ship on the beach.");
-      addNewArea(Crater);
+      Area Crater = new Area(3, 1, 0, 1, null, 6, "Axel's House", "The home of an old friend who occasionally aids you.");
+      addNewArea(Crater);//Where you meet up with Axel; Path of the righteous
       
-      Area Staircase = new Area(3, 2, 100, 1, null, 6, "Arby's", "You find the remains of a ship on the beach.");
-      addNewArea(Staircase);
+      Area Staircase = new Area(3, 2, 50, 1, null, 6, "cave entrance", "Long ago a secret path for smugglers caring ale.");
+      addNewArea(Staircase);//Only encounter of an Enemy
       
-      Area Watchtower = new Area(3, 3, 100, 1, null, 6, "Watchtower", "You find the remains of a ship on the beach.");
-      addNewArea(Watchtower);
+      Area Watchtower = new Area(3, 3, 0, 1, null, 6, "Final boss lair air vents", "These air vents are sure to lead to Kenny.");
+      addNewArea(Watchtower);//Transition map
       
-      Area Dam = new Area(3, 4, 100, 1, null, 6, "River Dam", "You find the remains of a ship on the beach.");
-      addNewArea(Dam);
+      Area Dam = new Area(3, 4, 0, 1, null, 7, "", "An abandoned Clinic.");
+      addNewArea(Dam);//Special location for free items
+      
 
 //row 5
-      Area Cave = new Area(4, 0, 100, 1, null, 6, "Cave", "You find the remains of a ship on the beach.");
-      addNewArea(Cave);
+      Area Cave = new Area(4, 0, 0, 1, null, 7, "Mason Road", "The road leading up to Kenny's Lair");
+      addNewArea(Cave);//Where you meet up with Thaddeus; Path of the killer
       
-      Area Wall = new Area(4, 1, 100, 1, null, 6, "Castle Wall", "You find the remains of a ship on the beach.");
-      addNewArea(Wall);
+      Area Wall = new Area(4, 1, 100, 1, null, 7, "Security Post", "After Kenny started gaining local attention he invested in guards.");
+      addNewArea(Wall);//Path of killer part 2
       
-      Area Entrance = new Area(4, 2, 100, 1, null, 6, "Castle Entrance", "You find the remains of a ship on the beach.");
-      addNewArea(Entrance);
+      Area Entrance = new Area(4, 2, 100, 1, null, 7, "Death Valley", "What the sign says leading toward the driveway of Kenny's Lair.");
+      addNewArea(Entrance);//Path of kill part 3
       
-      Area Village = new Area(4, 3, 100, 1, null, 6, "Village", "You find the remains of a ship on the beach.");
-      addNewArea(Village);
+      Area Village = new Area(4, 3, 0, 1, new Boss(), 8, "Kenny's Lair", "The home of the maniacal revolter.");
+      addNewArea(Village);//This will be the Final boss
       
-      Area Resivior = new Area(4, 4, 100, 1, null, 6, "Resivior Bank", "You find the remains of a ship on the beach.");
-      addNewArea(Resivior);
+      Area Resivior = new Area(4, 4, 0, 1, null, 9, "Ruins of Man", "You find the remains of a ship on the beach.");
+      addNewArea(Resivior);//Ending of the game
 
    }
    
