@@ -12,8 +12,6 @@ public class Player
    
    Armor[] armorall = new Armor[2];
    
-   private boolean gameStart = true;           // this variable is used in method restoreHealth to determine whether text should be displayed
-   
    //stats
    private double att = 1.0;
    private double def = 1.0;
@@ -159,14 +157,11 @@ public class Player
    public void addAtt(double attack) 
    {
       att += attack;
-      System.out.println("\nYour attack is now: " + att + "\n");
-      //String stats = ("Level: " + lvl + " \nHP: " + temphp + "/" + maxhp + " \nAttack: " + att + " \nDefense: " + def + " \nAgility: " + agi);
    }
    
    public void addDef(double defense)
    {
       def += defense;
-      System.out.println("\nYour defense is now: " + def + "\n");
    }
    
    public void addTempHp(double health)
@@ -177,13 +172,11 @@ public class Player
    public void addMaxHp(double health)
    {
       maxhp += health;
-      System.out.println("\nYour HP is now: " + temphp + "/" + maxhp + "\n");
    }
    
    public void addAgi(double agility)
    {
       agi += agility;
-      System.out.println("\nYour agility is now: " + agi + "\n");
    }
    
    public void levelUp()
@@ -194,9 +187,7 @@ public class Player
    public void restoreHealth()
    {
       temphp = maxhp;
-      if(gameStart == false)
-         System.out.println("Your health was completely restored: " + temphp + "/" + maxhp);
-      gameStart = false;
+      System.out.println("Your health was completely restored: " + temphp + "/" + maxhp);
    }
    
    public void addExp(int experience)
@@ -212,7 +203,7 @@ public class Player
    }
    public String getStats()
       {
-         String stats = ("Level: " + lvl + " \nHP: " + temphp + "/" + maxhp + " \nAttack: " + att + " \nDefense: " + def + " \nAgility: " + agi);
+         String stats = ("Your level is: " + lvl + " HP: " + temphp + "/" + maxhp + " Attack: " + att + " Defense: " + def + " Agility: " + agi);
            return (stats);
       }
    
